@@ -1,0 +1,70 @@
+
+body {
+    background-color: darkslategray;
+}
+
+body, html {
+    margin: 0;
+}
+
+header {
+    height: 8vh;
+    padding: 25px 0;
+    text-align: center;
+}
+
+header img {
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 8vh;
+}
+
+section {
+    background-color: blue;
+    margin: 10px auto 25px auto;
+    height: 82vh;
+    width: 95%;
+}
+
+#container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.statusBoard {
+    display: inline-block;
+    height: 100%;
+    width: 250px;
+}
+
+#computerBoard, #playerBoard {
+    position: absolute;
+}
+
+#computerBoard {
+    background: no-repeat url('../images/metal_panelRight.jpg');
+    right: 0;
+}
+
+#playerBoard {
+    background: no-repeat url('../images/metal_panelLeft.jpg');
+    left: 0;
+}
+
+#grid {
+    background-color: black;
+    position: absolute;
+    left: 250px;
+    display: inline-block;
+    width: 1000px;
+    height: 100%;
+}
+
+footer {
+    background-color: #313131;
+    height: 3vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
