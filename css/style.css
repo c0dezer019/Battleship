@@ -79,6 +79,11 @@ section {
     text-align: center;
 }
 
+.pieceContainer {
+    width: fit-content;
+    height: fit-content;
+}
+
 
 footer {
     background-color: #313131;
