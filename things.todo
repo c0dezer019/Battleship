@@ -1,0 +1,6 @@
+Todo: 
+    ☐ Find images for game pieces.
+    ☐ Divide images with divs to represent health.
+    ☐ Make a function that appends images to selected grid coords.
+        ☐ For each game piece, have a selector for player to choose where and how to position piece.
+        ☐ A function that monitors controlled grid spaces, i.e. spaces where a game piece is already at.
