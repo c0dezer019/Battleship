@@ -90,7 +90,7 @@ section {
 .pieceContainer {
     width: fit-content;
     height: fit-content;
-    grid-area: 10 / 1 / 11 / 5;
+    grid-column:  1 / span 6;
 }
 
 

@@ -33,7 +33,7 @@ generateGrid(10, 10);
  * For each game piece, generate a certain amount of divs to represent health.
  * Divs same size as grid squares 
  */
-const pGridContainer = document.querySelector('#playerGridContainer');
+const gridCell = document.querySelector('#playerGridContainer');
 // Create a container for the game piece
 const pieceContainer = document.createElement('div');
 pieceContainer.setAttribute('class', 'pieceContainer');
