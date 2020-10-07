@@ -76,7 +76,7 @@ section {
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     height: 40%;
-    width: 100%
+    width: 100%;
 }
 
 .grid-item {
@@ -90,10 +90,7 @@ section {
 .piece {
     height: 55px;
     width: 175px;
-    position: relative;
-    bottom: 43px;
-    left: -15px;
-    margin: 0;
+    margin: auto;
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);

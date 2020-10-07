@@ -1,4 +1,5 @@
-const gridLayout = []
+const gridLayout = [];
+const occupiedCoords = [];
 
 function generateGrid(row, col) {
     const pGridContainer = document.getElementById('playerGridContainer');
@@ -33,15 +34,6 @@ generateGrid(10, 10);
  * For each game piece, generate a certain amount of divs to represent health.
  * Divs same size as grid squares 
  */
-const gridCell = document.getElementById('10-1');
-// Create a container for the game piece
-const pieceContainer = document.createElement('div');
-pieceContainer.setAttribute('class', 'pieceContainer');
-// Add an image to container
-const carrier = document.createElement('img');
-carrier.setAttribute('src', '../images/carrier.png');
-carrier.setAttribute('class', 'piece');
-gridCell.appendChild(carrier);
 
 
 // Append piece container to specified grid coords.
