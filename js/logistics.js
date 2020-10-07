@@ -104,21 +104,63 @@ const player = {
     "color": "rgb(79, 79, 241)",
 }
 
+const computer = {
+    "color": "red"
+}
+
 // Create the pieces
 
-window.addEventListener('DOMContentLoaded', function(){
     function playerDock () {
         const pPieces = document.getElementById('playerPieces');
+        const c = document.createElement('div');
+        pPieces.appendChild(c);
+        c.setAttribute('id', 'carrier');
+        c.setAttribute('class', 'shipPiece');
+        for (let i = 0; i < ships.carrier.size; i++){
+            const pip = document.createElement('span');
+            pip.style.backgroundColor = player.color;
+            pip.setAttribute('class','healthPip')
+            c.appendChild(pip);
+        }
         const bs = document.createElement('div');
         pPieces.appendChild(bs);
         bs.setAttribute('id', 'battleship');
         bs.setAttribute('class', 'shipPiece');
-        for (let i = 0; i <= ships.battleship.size; i++){
+        for (let i = 0; i < ships.battleship.size; i++){
             const pip = document.createElement('span');
             pip.style.backgroundColor = player.color;
             pip.setAttribute('class','healthPip')
             bs.appendChild(pip);
         }
+        const cr = document.createElement('div');
+        pPieces.appendChild(cr);
+        cr.setAttribute('id', 'battleship');
+        cr.setAttribute('class', 'shipPiece');
+        for (let i = 0; i < ships.cruiser.size; i++){
+            const pip = document.createElement('span');
+            pip.style.backgroundColor = player.color;
+            pip.setAttribute('class','healthPip')
+            cr.appendChild(pip);
+        }
+        const sub = document.createElement('div');
+        pPieces.appendChild(sub);
+        sub.setAttribute('id', 'battleship');
+        sub.setAttribute('class', 'shipPiece');
+        for (let i = 0; i < ships.submarine.size; i++){
+            const pip = document.createElement('span');
+            pip.style.backgroundColor = player.color;
+            pip.setAttribute('class','healthPip')
+            sub.appendChild(pip);
+        }
+        const des = document.createElement('div');
+        pPieces.appendChild(des);
+        des.setAttribute('id', 'battleship');
+        des.setAttribute('class', 'shipPiece');
+        for (let i = 0; i < ships.destroyer.size; i++){
+            const pip = document.createElement('span');
+            pip.style.backgroundColor = player.color;
+            pip.setAttribute('class','healthPip')
+            des.appendChild(pip);
+        }
     }
     playerDock();
-})
