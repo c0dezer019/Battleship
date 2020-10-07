@@ -1,12 +1,16 @@
 Todo: 
     ✘ Find images for game pieces. @started(20-10-06 14:05) @cancelled(20-10-06 15:05) @wasted(1h39s)
-    ✔ Draw sample image for a game piece. @started(20-10-06 16:27) @done(20-10-06 16:39) @lasted(12m41s)
-        ✔ Shrink images to proper size. @started(20-10-06 16:28) @done(20-10-06 16:39) @lasted(11m44s)
-    ☐ Divide image with divs to represent health. @started(20-10-06 16:38)
-    ☐ Make a function that appends images to selected grid coords.
-        ☐ For each game piece, have a selector for player to choose where and how to position piece.
-            ☐ A way to rotate piece.
-        ☐ A function that monitors controlled grid spaces, i.e. spaces where a game piece is already at.
-    ☐ Draw the rest of the pieces.
-        ☐ Add pieces into the game.
+    ✘ Draw sample image for a game piece. @started(20-10-06 16:27) @cancelled(20-10-07 14:10) @wasted(21h43m54s)
+        ✘ Shrink images to proper size. @started(20-10-06 16:28) @cancelled(20-10-07 14:10) @wasted(21h42m51s)
+    ✘ Divide image with divs to represent health. @started(20-10-06 16:38) @cancelled(20-10-07 14:11) @wasted(21h33m1s)
+    ✘ Make a function that appends images to selected grid coords. @cancelled(20-10-07 14:11)
+        ✘ For each game piece, have a selector for player to choose where and how to position piece. @cancelled(20-10-07 14:11)
+            ✘ A way to rotate piece. @cancelled(20-10-07 14:11)
+    ✔ Generate classes for each ship type. @started(20-10-07 14:11) @done(20-10-07 14:28) @lasted(17m23s)
+    ☐ A function that draws out the ship on the grid.
+        ☐ Color grid spaces that are occupied.
+        ☐ Block spaces immediately surrounding the game piece.
+    ☐ A function that monitors controlled grid spaces, i.e. spaces where a game piece is already at.
+    ✘ Draw the rest of the pieces. @cancelled(20-10-07 14:14)
+        ✘ Add pieces into the game. @cancelled(20-10-07 14:14)
     ☐ Expand grid

@@ -1,8 +1,6 @@
 import { occupiedCoords } from './gridHandler';
 // Makes the game pieces that will make up the board and assign them to the board
 
-import occupiedCoords from '../js/gridHandler.js'
-
 const ships = {
     carrier: {
         size: 5
@@ -41,6 +39,10 @@ class Ship {
         return this.size();
     }
 
+    get color() {
+        return this.color;
+    }
+
     placeShip (x, y) {
         const coords = [];
         
@@ -63,7 +65,37 @@ class Ship {
     }
 }
 
-class Carrier extends Ship [
+class Carrier extends Ship {
+    constructor(color) {
+        this.size = ships.carrier.size;
+        this.color = color;
+    }
+}
 
-    
-]
+class Battleship extends Ship {
+    constructor(color) {
+        this.size = ships.battleship.size;
+        this.color = color;
+    }
+}
+
+class Cruiser extends Ship {
+    constructor(color) {
+        this.size = ships.cruiser.size;
+        this.color = color;
+    }
+}
+
+class Submarine extends Ship {
+    constructor(color) {
+        this.size = ships.submarine.size;
+        this.color = color;
+    }
+}
+
+class Destroyer extends Ship {
+    constructor(color) {
+        this.size = ships.destroyer.size;
+        this.color = color;
+    }
+}
