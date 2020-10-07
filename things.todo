@@ -7,7 +7,7 @@ Todo:
         ✘ For each game piece, have a selector for player to choose where and how to position piece. @cancelled(20-10-07 14:11)
             ✘ A way to rotate piece. @cancelled(20-10-07 14:11)
     ✔ Generate classes for each ship type. @started(20-10-07 14:11) @done(20-10-07 14:28) @lasted(17m23s)
-    ☐ A function that draws out the ship on the grid.
+    ☐ A function that draws out the ship on the grid. @started(20-10-07 14:29)
         ☐ Color grid spaces that are occupied.
         ☐ Block spaces immediately surrounding the game piece.
     ☐ A function that monitors controlled grid spaces, i.e. spaces where a game piece is already at.

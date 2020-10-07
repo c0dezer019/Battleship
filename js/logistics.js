@@ -1,4 +1,4 @@
-import { occupiedCoords } from './gridHandler';
+
 // Makes the game pieces that will make up the board and assign them to the board
 
 const ships = {
@@ -22,7 +22,7 @@ const ships = {
 class Ship {
     constructor(type, size, coords) {
         this.type = type;
-        this.size = $;
+        this.size = size;
         this.orientation = 'horizontal';
         this.coords = coords;
     }
@@ -99,3 +99,26 @@ class Destroyer extends Ship {
         this.color = color;
     }
 }
+
+const player = {
+    "color": "rgb(79, 79, 241)",
+}
+
+// Create the pieces
+
+window.addEventListener('DOMContentLoaded', function(){
+    function playerDock () {
+        const pPieces = document.getElementById('playerPieces');
+        const bs = document.createElement('div');
+        pPieces.appendChild(bs);
+        bs.setAttribute('id', 'battleship');
+        bs.setAttribute('class', 'shipPiece');
+        for (let i = 0; i <= ships.battleship.size; i++){
+            const pip = document.createElement('span');
+            pip.style.backgroundColor = player.color;
+            pip.setAttribute('class','healthPip')
+            bs.appendChild(pip);
+        }
+    }
+    playerDock();
+})
