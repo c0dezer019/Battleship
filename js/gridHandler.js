@@ -19,7 +19,7 @@ function generateGrid(row, col) {
             cell = document.createElement('div');
             pGridContainer.appendChild(cell).className = "grid-item";
             const cellId = `${i+1}-${j+1}`
-            console.log(cellId);
+            // console.log(cellId);
             cell.setAttribute('id', cellId);
             // Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on. 
         }
@@ -33,15 +33,15 @@ generateGrid(10, 10);
  * For each game piece, generate a certain amount of divs to represent health.
  * Divs same size as grid squares 
  */
-const gridCell = document.querySelector('#playerGridContainer');
+const gridCell = document.getElementById('10-1');
 // Create a container for the game piece
 const pieceContainer = document.createElement('div');
 pieceContainer.setAttribute('class', 'pieceContainer');
 // Add an image to container
 const carrier = document.createElement('img');
-carrier.setAttribute('src', '../images/carrier2.png');
-pieceContainer.appendChild(carrier);
-pGridContainer.appendChild(pieceContainer);
+carrier.setAttribute('src', '../images/carrier.png');
+carrier.setAttribute('class', 'piece');
+gridCell.appendChild(carrier);
 
 
 // Append piece container to specified grid coords.
