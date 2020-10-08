@@ -163,13 +163,7 @@ const buttonZone = document.createElement('div');
 buttonZone.setAttribute('class', 'theButtonZone');
 document.getElementById('playerBoard').appendChild(buttonZone);
 
-const rotButton = document.createElement('button');
-rotButton.setAttribute('id', 'rotate');
-rotButton.innerText = "Rotate"
-document.querySelector('.theButtonZone').appendChild(rotButton);
-
 const startButton = document.createElement('button');
-startButton.setAttribute('id', 'startGame');
-startButton.style.backgroundColor = "green";
+startButton.setAttribute('id', 'start');
 startButton.innerText = "Start"
 document.querySelector('.theButtonZone').appendChild(startButton);

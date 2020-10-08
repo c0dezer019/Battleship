@@ -44,31 +44,25 @@ section {
 
 #computerBoard {
     background: no-repeat url('../images/metal_panelRight.jpg');
-    right: 0;
+    right: 100px;
 }
 
 #playerBoard {
     background: no-repeat url('../images/metal_panelLeft.jpg');
-    left: 0;
+    left: 159px;
 }
 
 #gridContainer {
     height: 100%;
-    width: fit-content;
-    margin: 0;
     position: absolute;
-    left: 350px;
-    transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    -o-transform: scale(1, 1);
+    left: 410px;
 }
 
-#rotate {
+#start {
     position: relative;
     top: 120px;
     left: 80px;
+    
 }
 
 :root {
@@ -77,17 +71,25 @@ section {
 }
 
 #playerGridContainer {
-    background-color: black;
+    background-color: white;
     display: grid;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
-    height: fit-content;
     width: 100%;
+}
+
+#computerGridContainer {
+    background-color: white;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    width: 100%;
+    margin-top: 55px;
 }
 
 .grid-item {
     padding: 1em;
-    border: 1px solid white;
+    border: 1px solid black;
     text-align: center;
     height: 1px;
     width: 1px;
@@ -128,6 +130,17 @@ section {
     top: 100px;
 }
 
+#startGame {
+    border-radius: 25%;
+    position: relative;
+    top: 30px;
+    left: 82px;
+    width: 90px;
+    -webkit-border-radius: 25%;
+    -moz-border-radius: 25%;
+    -ms-border-radius: 25%;
+    -o-border-radius: 25%;
+}
 
 footer {
     background-color: #313131;
