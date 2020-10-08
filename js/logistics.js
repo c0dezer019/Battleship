@@ -166,10 +166,10 @@ document.getElementById('playerBoard').appendChild(buttonZone);
 const rotButton = document.createElement('button');
 rotButton.setAttribute('id', 'rotate');
 rotButton.innerText = "Rotate"
-document.getElementsByClassName('theButtonZone').appendChild(rotButton);
+document.querySelector('.theButtonZone').appendChild(rotButton);
 
 const startButton = document.createElement('button');
 startButton.setAttribute('id', 'startGame');
 startButton.style.backgroundColor = "green";
 startButton.innerText = "Start"
-document.getElementsByClassName('theButtonZone').appendChild(rotButton);
+document.querySelector('.theButtonZone').appendChild(startButton);
