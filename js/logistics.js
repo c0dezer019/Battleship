@@ -2,40 +2,41 @@
 
 const ships = {
     carrier: {
-        size: 5
+        size: 5,
+        rotation: "horizontal"
     },
     battleship: {
-        size: 4
+        size: 4,
+        rotation: "horizontal"
     },
     cruiser: {
-        size: 3
+        size: 3,
+        rotation: "horizontal",
     },
     submarine: {
-        size: 3
+        size: 3,
+        rotation: "horizontal"
     },
     destroyer: {
-        size: 2
+        size: 2,
+        rotation: "horizontal"
+    },
+    changeRotation: function(type, newRot) {
+        type = newRot;
     }
 }
 
-class Ship {
-    constructor(type, size, coords) {
-        this.type = type;
-        this.size = size;
-        this.orientation = 'horizontal';
-        this.coords = coords;
+/* class Ship {
+    constructor(rotation) {
+        this.rotation = rotation;
     }
 
     rotateShip(newRot) {
-        return this.orientation = newRot;
+        return this.rotation = newRot;
     }
 
     get size() {
         return this.size;
-    }
-
-    get newRotation() {
-        return this.size();
     }
 
     get color() {
@@ -45,6 +46,7 @@ class Ship {
 
 class Carrier extends Ship {
     constructor(color) {
+        super(rotation)
         this.size = ships.carrier.size;
         this.color = color;
     }
@@ -76,7 +78,7 @@ class Destroyer extends Ship {
         this.size = ships.destroyer.size;
         this.color = color;
     }
-}
+} */
 
 const player = {
     "color": "rgb(79, 79, 241)",
@@ -145,3 +147,7 @@ for (let i = 0; i < ships.destroyer.size; i++) {
     pip.setAttribute('id', 'destroyer');
     des.appendChild(pip);
 }
+const rotButton = document.createElement('button');
+document.getElementById('playerBoard').appendChild(rotButton);
+rotButton.setAttribute('id', 'rotate');
+rotButton.innerText = "Rotate"

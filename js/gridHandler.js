@@ -29,6 +29,8 @@ function generateGrid(row, col) {
 
 generateGrid(10, 10);
 
+const pCarrier = new Carrier("horizontal");
+
 let active = null;
 
 const shipSelect = document.getElementById('playerPieces');
@@ -36,7 +38,9 @@ const shipSelect = document.getElementById('playerPieces');
 shipSelect.addEventListener('click', handleClick);
 
 const gridCoords = document.querySelectorAll('.grid-item');
+const rotBtn = document.getElementById('rotate');
 gridCoords.forEach(el => el.addEventListener('click', handleClick));
+rotBtn.addEventListener('click', handleClick);
 
 function handleClick(e) {
     if (e.target.id === "carrier" || e.target.id === "battleship" || e.target.id === "cruiser" || e.target.id === "submarine" || e.target.id === "destroyer") {
@@ -56,7 +60,24 @@ function handleClick(e) {
     if (e.target.className === "grid-item") {
         // console.log("You clicked me!");
         // console.log(e.target.id);
-
-        c
+        if (game.stage == 'staging') {
+            if (active === null) {
+                alert('Please select a piece to stage first!');
+            } else {
+                if (active === "carrier") {
+                    placeShip();
+                }
+            }
+        }
+        
     }
+    if (e.target.id === 'rotate') {
+        console.log('rotating carrier.');
+        pCarrier.rotateShip("vertical");
+        console.log('New rotation: ' + pCarrier.rotation);
+    }
+}
+
+function placeShip(type) {
+
 }
