@@ -19,7 +19,7 @@ function generateGrid(row, col) {
         for (let j = 0; j < col; j++) {
             cell = document.createElement('div');
             pGridContainer.appendChild(cell).className = "grid-item";
-            const cellId = `${i+1}-${j+1}`
+            const cellId = `${i+1}-${j+1}`;
             // console.log(cellId);
             cell.setAttribute('id', cellId);
             // Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on. 
@@ -33,7 +33,10 @@ let active = null;
 
 const shipSelect = document.getElementById('playerPieces');
 
-shipSelect.addEventListener('click', handleClick)
+shipSelect.addEventListener('click', handleClick);
+
+const gridCoords = document.querySelectorAll('.grid-item');
+gridCoords.forEach(el => el.addEventListener('click', handleClick));
 
 function handleClick(e) {
     if (e.target.id === "carrier" || e.target.id === "battleship" || e.target.id === "cruiser" || e.target.id === "submarine" || e.target.id === "destroyer") {
@@ -48,5 +51,12 @@ function handleClick(e) {
             document.querySelectorAll(`#${e.target.id}`).forEach(el => el.style.borderColor = "yellow")
             console.log("New active: " + active);
         }
-    } 
+    }
+
+    if (e.target.className === "grid-item") {
+        // console.log("You clicked me!");
+        // console.log(e.target.id);
+
+        c
+    }
 }

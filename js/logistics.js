@@ -41,27 +41,6 @@ class Ship {
     get color() {
         return this.color;
     }
-
-    placeShip(x, y) {
-        const coords = [];
-
-        if (this.orientation === 'horizontal') {
-            for (let i = y; i <= this.size; i++) {
-                coords.push(`${x}-${y}`);
-                y += 1;
-                console.log(this.type + " placed horizontally.");
-            }
-        } else if (this.orientation === 'vertical') {
-            for (let i = x; i <= this.size; i++) {
-                coords.push(`${x}-${y}`);
-                x += 1;
-                console.log(this.type + " placed vertically.");
-            }
-        } else {
-            console.log("Incorrect parameter")
-        }
-        occupiedCoords.push(coords);
-    }
 }
 
 class Carrier extends Ship {
