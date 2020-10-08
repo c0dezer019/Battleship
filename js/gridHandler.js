@@ -29,6 +29,7 @@ function generateGrid(row, col) {
 
 generateGrid(10, 10);
 
+let toggle = false;
 let active = null;
 
 const shipSelect = document.getElementById('playerPieces');
@@ -70,7 +71,17 @@ function handleClick(e) {
         
     }
     if (e.target.id === 'rotate') {
-       let toggle = 'horizontal'
+
+       if (!toggle) {
+           toggle = true;
+           ships.changeRotation(active, 'vertical');
+           console.log(active + " rotation changed to " + toggle);
+           console.log("this")
+       } else {
+           toggle = false;
+           ships.changeRotation(active, 'horizontal');
+           console.log(active + " rotation changed to " + toggle);
+       }
     }
 }
 
