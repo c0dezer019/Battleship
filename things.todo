@@ -10,11 +10,32 @@ Todo:
     ✔ Add ships to player panel. @done(20-10-07 18:07)
     ☐ A function that draws out the ship on the grid. @started(20-10-07 18:08)
         ✔ Make pieces in player panel clickable. @started(20-10-07 18:32) @done(20-10-07 18:50) @lasted(18m34s)
-        ☐ Color grid spaces that are occupied. @started(20-10-07 19:40)
+        ✔ Color grid spaces that are occupied. @started(20-10-07 19:40) @done(20-10-08 11:50) @lasted(16h10m28s)
             ✔ Make grid cells clickable. @done(20-10-07 20:42)
-            ✔ Make pieces rotatable. @done(20-10-08 01:26)
-        ☐ Block spaces immediately surrounding the game piece.
-    ☐ A function that monitors controlled grid spaces, i.e. spaces where a game piece is already at.
+            ☐ Make pieces rotatable.
+                ✔ Change ship rotation value. @done(20-10-08 12:09)
+                ✔ Send isRotating boolean to placeShip function. @done(20-10-08 12:10)
+                ☐ Wrap existing code in placeShip() in an if statement.
+                    ☐ Checks if isRotating is true or false.
+                        ☐ If false, trigger else.
+                    ☐ Remove current ship coords from occupiedPCoords.
+                    ☐ Add new coords to occupiedPCoords and ship object coordinates.
+                    ☐ Remove color from old coords.
+                    ☐ Add color to new occupied spaces.
+            ☐ Grid spaces that are occupied shouldn't be available for new placement. @started(20-10-08 11:53)
+                ☐ With an active ship, check to see if clicked cell is occupied.
+                    ☐ Find clicked cell coords in occuppiedPCoords.
+            ✘ Block spaces immediately surrounding the game piece. @cancelled(20-10-08 11:59)
+        ☐ Make a function that places computer pieces randomly.
+    ☐ Draw out a grid space for computer.
+        ☐ Give each cell an ID.
+    ☐ Combat logic
+        ☐ Player selects square on computer's field.
+            ☐ If cell is occuppied, turn cell orange.
+            ☐ If cell is empty, turn cell white.
+            ☐ Each cell can only bit hit once.
+            ☐ Deduct from ship coordinates.
+                ☐ If ship coords reaches, zero the ship is sunck
     ✘ Draw the rest of the pieces. @cancelled(20-10-07 14:14)
         ✘ Add pieces into the game. @cancelled(20-10-07 14:14)
     ☐ Expand grid

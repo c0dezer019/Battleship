@@ -3,7 +3,8 @@ const ships = {
     carrier: {
         size: 5,
         rotation: "horizontal",
-        coords: []
+        coords: [],
+        
     },
     battleship: {
         size: 4,
@@ -157,7 +158,18 @@ for (let i = 0; i < ships.destroyer.size; i++) {
     pip.setAttribute('id', 'destroyer');
     des.appendChild(pip);
 }
+
+const buttonZone = document.createElement('div');
+buttonZone.setAttribute('class', 'theButtonZone');
+document.getElementById('playerBoard').appendChild(buttonZone);
+
 const rotButton = document.createElement('button');
-document.getElementById('playerBoard').appendChild(rotButton);
 rotButton.setAttribute('id', 'rotate');
 rotButton.innerText = "Rotate"
+document.getElementsByClassName('theButtonZone').appendChild(rotButton);
+
+const startButton = document.createElement('button');
+startButton.setAttribute('id', 'startGame');
+startButton.style.backgroundColor = "green";
+startButton.innerText = "Start"
+document.getElementsByClassName('theButtonZone').appendChild(rotButton);
