@@ -1,4 +1,3 @@
-
 // Makes the game pieces that will make up the board and assign them to the board
 
 const ships = {
@@ -43,15 +42,15 @@ class Ship {
         return this.color;
     }
 
-    placeShip (x, y) {
+    placeShip(x, y) {
         const coords = [];
-        
+
         if (this.orientation === 'horizontal') {
             for (let i = y; i <= this.size; i++) {
                 coords.push(`${x}-${y}`);
                 y += 1;
                 console.log(this.type + " placed horizontally.");
-            } 
+            }
         } else if (this.orientation === 'vertical') {
             for (let i = x; i <= this.size; i++) {
                 coords.push(`${x}-${y}`);
@@ -110,57 +109,60 @@ const computer = {
 
 // Create the pieces
 
-    function playerDock () {
-        const pPieces = document.getElementById('playerPieces');
-        const c = document.createElement('div');
-        pPieces.appendChild(c);
-        c.setAttribute('id', 'carrier');
-        c.setAttribute('class', 'shipPiece');
-        for (let i = 0; i < ships.carrier.size; i++){
-            const pip = document.createElement('span');
-            pip.style.backgroundColor = player.color;
-            pip.setAttribute('class','healthPip')
-            c.appendChild(pip);
-        }
-        const bs = document.createElement('div');
-        pPieces.appendChild(bs);
-        bs.setAttribute('id', 'battleship');
-        bs.setAttribute('class', 'shipPiece');
-        for (let i = 0; i < ships.battleship.size; i++){
-            const pip = document.createElement('span');
-            pip.style.backgroundColor = player.color;
-            pip.setAttribute('class','healthPip')
-            bs.appendChild(pip);
-        }
-        const cr = document.createElement('div');
-        pPieces.appendChild(cr);
-        cr.setAttribute('id', 'battleship');
-        cr.setAttribute('class', 'shipPiece');
-        for (let i = 0; i < ships.cruiser.size; i++){
-            const pip = document.createElement('span');
-            pip.style.backgroundColor = player.color;
-            pip.setAttribute('class','healthPip')
-            cr.appendChild(pip);
-        }
-        const sub = document.createElement('div');
-        pPieces.appendChild(sub);
-        sub.setAttribute('id', 'battleship');
-        sub.setAttribute('class', 'shipPiece');
-        for (let i = 0; i < ships.submarine.size; i++){
-            const pip = document.createElement('span');
-            pip.style.backgroundColor = player.color;
-            pip.setAttribute('class','healthPip')
-            sub.appendChild(pip);
-        }
-        const des = document.createElement('div');
-        pPieces.appendChild(des);
-        des.setAttribute('id', 'battleship');
-        des.setAttribute('class', 'shipPiece');
-        for (let i = 0; i < ships.destroyer.size; i++){
-            const pip = document.createElement('span');
-            pip.style.backgroundColor = player.color;
-            pip.setAttribute('class','healthPip')
-            des.appendChild(pip);
-        }
-    }
-    playerDock();
+
+const pPieces = document.getElementById('playerPieces');
+const c = document.createElement('div');
+pPieces.appendChild(c);
+c.setAttribute('id', 'carrierD');
+c.setAttribute('class', 'shipPiece');
+for (let i = 0; i < ships.carrier.size; i++) {
+    const pip = document.createElement('span');
+    pip.style.backgroundColor = player.color;
+    pip.setAttribute('class', 'healthPip')
+    pip.setAttribute('id', 'carrier');
+    c.appendChild(pip);
+}
+const bs = document.createElement('div');
+pPieces.appendChild(bs);
+bs.setAttribute('id', 'battleshipD');
+bs.setAttribute('class', 'shipPiece');
+for (let i = 0; i < ships.battleship.size; i++) {
+    const pip = document.createElement('span');
+    pip.style.backgroundColor = player.color;
+    pip.setAttribute('class', 'healthPip')
+    pip.setAttribute('id', 'battleship');
+    bs.appendChild(pip);
+}
+const cr = document.createElement('div');
+pPieces.appendChild(cr);
+cr.setAttribute('id', 'cruiserD');
+cr.setAttribute('class', 'shipPiece');
+for (let i = 0; i < ships.cruiser.size; i++) {
+    const pip = document.createElement('span');
+    pip.style.backgroundColor = player.color;
+    pip.setAttribute('class', 'healthPip')
+    pip.setAttribute('id', 'cruiser');
+    cr.appendChild(pip);
+}
+const sub = document.createElement('div');
+pPieces.appendChild(sub);
+sub.setAttribute('id', 'submarineD');
+sub.setAttribute('class', 'shipPiece');
+for (let i = 0; i < ships.submarine.size; i++) {
+    const pip = document.createElement('span');
+    pip.style.backgroundColor = player.color;
+    pip.setAttribute('class', 'healthPip')
+    pip.setAttribute('id', 'submarine');
+    sub.appendChild(pip);
+}
+const des = document.createElement('div');
+pPieces.appendChild(des);
+des.setAttribute('id', 'destroyerD');
+des.setAttribute('class', 'shipPiece');
+for (let i = 0; i < ships.destroyer.size; i++) {
+    const pip = document.createElement('span');
+    pip.style.backgroundColor = player.color;
+    pip.setAttribute('class', 'healthPip')
+    pip.setAttribute('id', 'destroyer');
+    des.appendChild(pip);
+}

@@ -25,16 +25,28 @@ function generateGrid(row, col) {
             // Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on. 
         }
     }
-    10
 }
 
 generateGrid(10, 10);
 
-/* 
- * For each game piece, generate a certain amount of divs to represent health.
- * Divs same size as grid squares 
- */
+let active = null;
 
+const shipSelect = document.getElementById('playerPieces');
 
-// Append piece container to specified grid coords.
-// Rotate piece depending on position settings.
+shipSelect.addEventListener('click', handleClick)
+
+function handleClick(e) {
+    if (e.target.id === "carrier" || e.target.id === "battleship" || e.target.id === "cruiser" || e.target.id === "submarine" || e.target.id === "destroyer") {
+
+        if (active === null){
+            active = e.target.id;
+            document.querySelectorAll(`#${e.target.id}`).forEach(el => el.style.borderColor = "yellow");
+            console.log(active);
+        } else {
+            document.querySelectorAll(`#${active}`).forEach(el => el.style.borderColor = "black");
+            active = e.target.id;
+            document.querySelectorAll(`#${e.target.id}`).forEach(el => el.style.borderColor = "yellow")
+            console.log("New active: " + active);
+        }
+    } 
+}
