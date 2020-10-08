@@ -29,8 +29,6 @@ function generateGrid(row, col) {
 
 generateGrid(10, 10);
 
-const pCarrier = new Carrier("horizontal");
-
 let active = null;
 
 const shipSelect = document.getElementById('playerPieces');
@@ -72,9 +70,7 @@ function handleClick(e) {
         
     }
     if (e.target.id === 'rotate') {
-        console.log('rotating carrier.');
-        pCarrier.rotateShip("vertical");
-        console.log('New rotation: ' + pCarrier.rotation);
+       let toggle = 'horizontal'
     }
 }
 

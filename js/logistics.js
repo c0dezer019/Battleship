@@ -22,66 +22,24 @@ const ships = {
         rotation: "horizontal"
     },
     changeRotation: function(type, newRot) {
-        type = newRot;
+        if (type === "carrier") {
+            this.carrier.rotation = newRot;
+        } else if (type === "battleship") {
+            this.battleship.rotation = newRot;
+        } else if (type === "cruiser") {
+            this.cruiser.rotation = newRot;
+        } else if (type === "submarine") {
+            this.submarine.rotation = newRot;
+        } else if (type === "destroyer") {
+            this.destroyer.rotation = newRot;
+        }
     }
 }
 
-/* class Ship {
-    constructor(rotation) {
-        this.rotation = rotation;
-    }
 
-    rotateShip(newRot) {
-        return this.rotation = newRot;
-    }
-
-    get size() {
-        return this.size;
-    }
-
-    get color() {
-        return this.color;
-    }
-}
-
-class Carrier extends Ship {
-    constructor(color) {
-        super(rotation)
-        this.size = ships.carrier.size;
-        this.color = color;
-    }
-}
-
-class Battleship extends Ship {
-    constructor(color) {
-        this.size = ships.battleship.size;
-        this.color = color;
-    }
-}
-
-class Cruiser extends Ship {
-    constructor(color) {
-        this.size = ships.cruiser.size;
-        this.color = color;
-    }
-}
-
-class Submarine extends Ship {
-    constructor(color) {
-        this.size = ships.submarine.size;
-        this.color = color;
-    }
-}
-
-class Destroyer extends Ship {
-    constructor(color) {
-        this.size = ships.destroyer.size;
-        this.color = color;
-    }
-} */
 
 const player = {
-    "color": "rgb(79, 79, 241)",
+    "color": "rgb(79, 79, 241)"
 }
 
 const computer = {
