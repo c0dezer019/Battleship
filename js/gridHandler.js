@@ -1,5 +1,5 @@
 const gridLayout = [];
-const occupiedCoords = [];
+const occupiedPCoords = [];
 
 function generateGrid(row, col) {
     const pGridContainer = document.getElementById('playerGridContainer');
@@ -44,7 +44,7 @@ rotBtn.addEventListener('click', handleClick);
 function handleClick(e) {
     if (e.target.id === "carrier" || e.target.id === "battleship" || e.target.id === "cruiser" || e.target.id === "submarine" || e.target.id === "destroyer") {
 
-        if (active === null){
+        if (active === null) {
             active = e.target.id;
             document.querySelectorAll(`#${e.target.id}`).forEach(el => el.style.borderColor = "yellow");
             console.log(active);
@@ -63,28 +63,43 @@ function handleClick(e) {
             if (active === null) {
                 alert('Please select a piece to stage first!');
             } else {
-                if (active === "carrier") {
-                    placeShip();
-                }
+                const arr = Array.from(e.target.id);
+                let x = parseInt(arr[0]);
+                let y = parseInt(arr[2]);
+                ships.changeCoords(active, x, y);
+                placeShip(x, y);
+                console.log(ships.getCoords(active))
             }
         }
-        
+
     }
     if (e.target.id === 'rotate') {
 
-       if (!toggle) {
-           toggle = true;
-           ships.changeRotation(active, 'vertical');
-           console.log(active + " rotation changed to " + toggle);
-           console.log("this")
-       } else {
-           toggle = false;
-           ships.changeRotation(active, 'horizontal');
-           console.log(active + " rotation changed to " + toggle);
-       }
+        if (!toggle) {
+            toggle = true;
+            ships.changeRotation(active, 'vertical');
+            console.log(active + " rotation changed to " + toggle);
+            placeShip(active);
+        } else {
+            toggle = false;
+            ships.changeRotation(active, 'horizontal');
+            console.log(active + " rotation changed to " + toggle);
+            placeShip(active);
+        }
     }
 }
 
-function placeShip(type) {
-
-}
+function placeShip(x, y, act) {
+    if (ships.getRot(active) === "horizontal") {
+        for (let i = 0; i < x + ships.getSize(active) - 1; i++) {
+            const takeCoords = `${x+i}-${y}`;
+            occupiedPCoords.push(takeCoords);
+        }
+    } else {
+        for (let i = 0; i < y + ships.getSize(active) - 1; i++) {
+            const takeCoords = `${x}-${y+i}`;
+            occupiedPCoords.push(takeCoords);
+        }
+    }
+    console.log(occupiedPCoords);
+    }

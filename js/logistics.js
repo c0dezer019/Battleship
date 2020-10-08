@@ -1,27 +1,31 @@
 // Makes the game pieces that will make up the board and assign them to the board
-
 const ships = {
     carrier: {
         size: 5,
-        rotation: "horizontal"
+        rotation: "horizontal",
+        coords: []
     },
     battleship: {
         size: 4,
-        rotation: "horizontal"
+        rotation: "horizontal",
+        coords: []
     },
     cruiser: {
         size: 3,
         rotation: "horizontal",
+        coords: []
     },
     submarine: {
         size: 3,
-        rotation: "horizontal"
+        rotation: "horizontal",
+        coords: []
     },
     destroyer: {
         size: 2,
-        rotation: "horizontal"
+        rotation: "horizontal",
+        coords: []
     },
-    changeRotation: function(type, newRot) {
+    changeRotation: function (type, newRot) {
         if (type === "carrier") {
             this.carrier.rotation = newRot;
         } else if (type === "battleship") {
@@ -33,21 +37,69 @@ const ships = {
         } else if (type === "destroyer") {
             this.destroyer.rotation = newRot;
         }
+    },
+    changeCoords: function(type, x, y) {
+        if (type === "carrier") {
+            this.carrier.coords.push(x, y);
+        } else if (type === "battleship") {
+            this.battleship.coords.push(x, y);
+        } else if (type === "cruiser") {
+            this.cruiser.coords.push(x, y);
+        } else if (type === "submarine") {
+            this.submarine.coords.push(x, y);
+        } else if (type === "destroyer") {
+            this.destroyer.coords.push(x, y);
+        }
+    },
+    getRot: function(type) {
+        if (type === "carrier") {
+            return this.carrier.rotation;
+        } else if (type === "battleship") {
+            return this.battleship.rotation;
+        } else if (type === "cruiser") {
+            return this.cruiser.rotation;
+        } else if (type === "submarine") {
+            return this.submarine.rotation;
+        } else if (type === "destroyer") {
+            return this.destroyer.rotation
+        }
+    },
+    getSize: function(type) {
+        if (type === "carrier") {
+            return this.carrier.size;
+        } else if (type === "battleship") {
+            return this.battleship.size;
+        } else if (type === "cruiser") {
+            return this.cruiser.size;
+        } else if (type === "submarine") {
+            return this.submarine.size;
+        } else if (type === "destroyer") {
+            return this.destroyer.size;
+        }
+    },
+    getCoords: function(type) {
+        if (type === "carrier") {
+            return this.carrier.coords;
+        } else if (type === "battleship") {
+            return this.battleship.coords;
+        } else if (type === "cruiser") {
+            return this.cruiser.coords;
+        } else if (type === "submarine") {
+            return this.submarine.coords;
+        } else if (type === "destroyer") {
+            return this.destroyer.coords;
+        }
     }
 }
-
-
 
 const player = {
     "color": "rgb(79, 79, 241)"
 }
-
 const computer = {
     "color": "red"
 }
 
 // Create the pieces
-
 
 const pPieces = document.getElementById('playerPieces');
 const c = document.createElement('div');

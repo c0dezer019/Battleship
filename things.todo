@@ -12,6 +12,7 @@ Todo:
         ✔ Make pieces in player panel clickable. @started(20-10-07 18:32) @done(20-10-07 18:50) @lasted(18m34s)
         ☐ Color grid spaces that are occupied. @started(20-10-07 19:40)
             ✔ Make grid cells clickable. @done(20-10-07 20:42)
+            ✔ Make pieces rotatable. @done(20-10-08 01:26)
         ☐ Block spaces immediately surrounding the game piece.
     ☐ A function that monitors controlled grid spaces, i.e. spaces where a game piece is already at.
     ✘ Draw the rest of the pieces. @cancelled(20-10-07 14:14)
