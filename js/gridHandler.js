@@ -5,6 +5,7 @@ const occupiedCCoords = [];
 const playerPlacedShips = [];
 const computerPlacedShips = [];
 
+
 function generateGrid(row, col) {
     const pGridContainer = document.getElementById('playerGridContainer');
     // Create a dynamic grid. This is what the player sees.
@@ -42,11 +43,13 @@ generateGrid(10, 10);
 let toggle = false;
 let active = null;
 
-const gridCoords = document.querySelector('.grid-item');
+const pGridCoords = document.getElementById('playerGridContainer');
+const cGridCoords = document.getElementById('computerGridContainer');
 const rotateBtn = document.getElementById('rotate');
 const shipSelect = document.getElementById('playerPieces');
 const startBtn = document.getElementById('start');
-gridCoords.forEach(el => el.addEventListener('click', handleClick));
+pGridCoords.addEventListener('click', handleClick);
+cGridCoords.addEventListener('click', handleClick);
 rotateBtn.addEventListener('click', handleClick);
 shipSelect.addEventListener('click', handleClick);
 startBtn.addEventListener('click', handleClick);
@@ -166,3 +169,4 @@ function placeShip(x, y, fleet) {
         }
     }
 }
+
