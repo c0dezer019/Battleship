@@ -25,7 +25,6 @@ function gameStart() {
 
     console.log(game.turn)
     if (game.getStage() == 'started') {
-
         if (game.getTurn() == 'player') {
             computerGrid.forEach(el => el.addEventListener('click', combatHandler));
 
