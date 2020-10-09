@@ -124,7 +124,6 @@ function handleClick(e) {
         for (let i = 0; i < maps.getPreset(1).length; i++) {
             occupiedCCoords.push(maps.getPreset(1)[i]);
         }
-        game.stage = "started";
         gameStart();
     }
 }

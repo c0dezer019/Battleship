@@ -22,7 +22,7 @@ Todo:
                     ☐ Add new coords to occupiedPCoords and ship object coordinates.
                     ☐ Remove color from old coords.
                     ☐ Add color to new occupied spaces.
-            ☐ Grid spaces that are occupied shouldn't be available for new placement. @started(20-10-08 11:53)
+            ☐ Grid spaces that are occupied shouldn't be available for new placement.
                 ☐ With an active ship, check to see if clicked cell is occupied.
                     ☐ Find clicked cell coords in occuppiedPCoords.
             ✘ Block spaces immediately surrounding the game piece. @cancelled(20-10-08 11:59)
