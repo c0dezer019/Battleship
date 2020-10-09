@@ -125,21 +125,28 @@ section {
 .theButtonZone {
     display: inline-block;
     position: relative;
-    height: fit-content;
-    width: fit-content;
-    top: 100px;
+    top: 20px;
+    left: -50px;
 }
+
 
 #startGame {
     border-radius: 25%;
     position: relative;
-    top: 30px;
-    left: 82px;
+    top: 0;
+    left: 0;
     width: 90px;
     -webkit-border-radius: 25%;
     -moz-border-radius: 25%;
     -ms-border-radius: 25%;
     -o-border-radius: 25%;
+}
+
+#rotate {
+    margin-left: 20px;
+    position: relative;
+    left: 80px;
+    top: 120px;
 }
 
 footer {

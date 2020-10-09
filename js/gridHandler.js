@@ -2,7 +2,8 @@ const pGridLayout = [];
 const cGridLayout = [];
 const occupiedPCoords = [];
 const occupiedCCoords = [];
-const placedShips = [];
+const playerPlacedShips = [];
+const computerPlacedShips = [];
 
 function generateGrid(row, col) {
     const pGridContainer = document.getElementById('playerGridContainer');
@@ -55,13 +56,15 @@ let toggle = false;
 let active = null;
 
 const gridCoords = document.querySelectorAll('.grid-item');
-const rotBtn = document.getElementById('rotate');
+const rotateBtn = document.getElementById('rotate');
 const shipSelect = document.getElementById('playerPieces');
 const startBtn = document.getElementById('startGame');
 gridCoords.forEach(el => el.addEventListener('click', handleClick));
-rotBtn.addEventListener('click', handleClick);
+rotateBtn.addEventListener('click', handleClick);
 shipSelect.addEventListener('click', handleClick);
 startBtn.addEventListener('click', handleClick);
+
+const enemyFleet = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer'];
 
 function handleClick(e) {
     if (e.target.id === "carrier" || e.target.id === "battleship" || e.target.id === "cruiser" || e.target.id === "submarine" || e.target.id === "destroyer") {
@@ -89,14 +92,13 @@ function handleClick(e) {
                 const arr = Array.from(e.target.id);
                 let x = parseInt(arr[0]);
                 let y = parseInt(arr[2]);
-                placeShip(x, y);
+                placeShip(x, y, 'player');
                 console.log("Poke")
             }
         }
-
     }
 
-    /* if (e.target.id === 'rotate') {
+    if (e.target.id === 'rotate') {
         if (!toggle) {
             toggle = true;
             ships.changeRotation(active, 'vertical');
@@ -108,38 +110,69 @@ function handleClick(e) {
             console.log(active + " rotation changed to " + toggle);
             placeShip(ships.getCoords(active)[0], ships.getCoords(active)[1], true);
         }
-    } */
+    }
+
+    if (e.target.id === "start") {
+        // Choose a random starting point.        
+        while (allShipsPlaced('comp')) {
+            active = enemyFleet.shift();
+            const x = Math.floor(Math.random() * (9 - 0 + 1) + 0);
+            const y = Math.floor(Math.random() * (9 - 0 + 1) + 0);
+                placeShip(x, y, 'comp');
+            }
+            game.stage = "started";
+            startGame();
+    }
 }
 
-const allShipsPlaced = () => placedShips.length === 5;
-
-
-function placeShip(x, y) {
-
-    // Checks too see if all ships are placed.
-    if (allShipsPlaced()) {
-        alert("You're grid is full, please press play!");
-
-        // Prevent duplication of same ship.
-    } else if (placedShips.find(el => el === active) === active) {
-        alert("You already placed this piece!");
+const allShipsPlaced = (c) => {
+    if (c == 'player') { 
+       return playerPlacedShips.length === 5; 
+    } else if (c == 'comp') {
+       return computerPlacedShips.length === 5;
     } else {
-        // If ship rotation is set horizontal (default rotation), make sure there is space for the piece.
-        if (ships.getRot(active) == 'horizontal') {
-            // Prevent placing ships if ship length exceeds 
-            if ((ships.getSize(active) - 1) + x <= 10) {
-                for (let i = 0; i < ships.getSize(active); i++) {
-                    const coord = `${x+i}-${y}`;
-                    const gridCell = document.getElementById(coord);
-                    gridCell.style.backgroundColor = "blue";
-                    occupiedPCoords.push(coord);
+        console.log("Error, no such fleet exists.");
+    }
+};
+
+function placeShip(x, y, fleet) {
+    if (fleet == 'comp'){
+        // Checks too see if all ships are placed.
+        if (allShipsPlaced(fleet)) {
+            alert("You're grid is full, please press play!");
+    
+            // Prevent duplication of same ship.
+        } else if (placedShips.find(el => el === active) === active) {
+            alert("You already placed this piece!");
+        } else {
+            // If ship rotation is set horizontal (default rotation), make sure there is space for the piece.
+            if (ships.getRot(active) == 'horizontal') {
+                // Prevent placing ships if ship length exceeds 
+                if ((ships.getSize(active) - 1) + x <= 10) {
+                    for (let i = 0; i < ships.getSize(active); i++) {
+                        const coord = `${x+i}-${y}`;
+                        const gridCell = document.getElementById(coord);
+                        gridCell.style.backgroundColor = "blue";
+                        occupiedPCoords.push(coord);
+                    }
+                } else if (ships.getSize(active) + y - 1 <= 10) {
+                    console.log("Danger, Will Robinson, danger.")
                 }
-            } else if (ships.getSize(active) + y - 1 <= 10) {
-                console.log("Danger, Will Robinson, danger.")
+                placedShips.push(active);
+                console.log(placedShips);
+                console.log(occupiedPCoords)
             }
-            placedShips.push(active);
-            console.log(placedShips);
-            console.log(occupiedPCoords)
+        }
+    } else {
+        if (allShipsPlaced(fleet)) {
+            console.log('Enemy fleet full.');
+        } else {
+            if (ships.getRot(active) == 'horizontal') {
+                for (let i = 0; i < ships.getSize(active); i++) {
+
+                }
+
+            }
         }
     }
 }

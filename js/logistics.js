@@ -165,5 +165,10 @@ document.getElementById('playerBoard').appendChild(buttonZone);
 
 const startButton = document.createElement('button');
 startButton.setAttribute('id', 'start');
-startButton.innerText = "Start"
+startButton.innerText = 'Start'
 document.querySelector('.theButtonZone').appendChild(startButton);
+
+const rotBtn = document.createElement('button');
+rotBtn.setAttribute('id', 'rotate');
+rotBtn.innerText = 'Rotate';
+document.querySelector('.theButtonZone').appendChild(rotBtn);
