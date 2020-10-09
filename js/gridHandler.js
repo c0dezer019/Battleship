@@ -7,15 +7,7 @@ const computerPlacedShips = [];
 
 function generateGrid(row, col) {
     const pGridContainer = document.getElementById('playerGridContainer');
-    // Generate a 2D array for a 10x10 grid space and push to gridLayout. First dimension represents a row A-J. 2nd dimension represents the columns 1-10.
-    for (let i = row; i > 0; i--) {
-        pGridLayout.push(Array.from({
-            length: col
-        }, (_, i) => i + 1));
-    }
-    console.log(pGridLayout);
     // Create a dynamic grid. This is what the player sees.
-
     pGridContainer.style.setProperty('--grid-rows', row);
     pGridContainer.style.setProperty('--grid-cols', col);
     for (let i = 0; i < row; i++) {
@@ -24,27 +16,22 @@ function generateGrid(row, col) {
             pGridContainer.appendChild(cell).className = "grid-item";
             const cellId = `${j}-${i}`;
             // console.log(cellId);
-            cell.setAttribute('id', cellId);
             // Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on. 
+            cell.setAttribute('id', cellId);
+            pGridLayout.push(cellId);
         }
     }
     // Generate computer's side of the board.
     const cGridContainer = document.getElementById('computerGridContainer');
-    for (let i = 0; i < row; i++) {
-        cGridLayout.push(Array.from({
-            length: col
-        }, (_, i) => i + 1));
-    }
-    console.log(cGridLayout);
-
     cGridContainer.style.setProperty('--grid-rows', row);
     cGridContainer.style.setProperty('--grid-cols', col);
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
             const cell = document.createElement('div');
             cGridContainer.appendChild(cell).className = "grid-item";
-            const cellId = `${j}-${i}`;
+            const cellId = `c${j}-${i}`;
             cell.setAttribute('id', cellId);
+            cGridLayout.push(cellId);
         }
     }
 }
@@ -55,16 +42,16 @@ generateGrid(10, 10);
 let toggle = false;
 let active = null;
 
-const gridCoords = document.querySelectorAll('.grid-item');
+const gridCoords = document.querySelector('.grid-item');
 const rotateBtn = document.getElementById('rotate');
 const shipSelect = document.getElementById('playerPieces');
-const startBtn = document.getElementById('startGame');
+const startBtn = document.getElementById('start');
 gridCoords.forEach(el => el.addEventListener('click', handleClick));
 rotateBtn.addEventListener('click', handleClick);
 shipSelect.addEventListener('click', handleClick);
 startBtn.addEventListener('click', handleClick);
 
-const enemyFleet = ['carrier', 'battleship', 'cruiser', 'submarine', 'destroyer'];
+
 
 function handleClick(e) {
     if (e.target.id === "carrier" || e.target.id === "battleship" || e.target.id === "cruiser" || e.target.id === "submarine" || e.target.id === "destroyer") {
@@ -92,6 +79,7 @@ function handleClick(e) {
                 const arr = Array.from(e.target.id);
                 let x = parseInt(arr[0]);
                 let y = parseInt(arr[2]);
+                ships.setPivot(active, e.target.id);
                 placeShip(x, y, 'player');
                 console.log("Poke")
             }
@@ -99,80 +87,82 @@ function handleClick(e) {
     }
 
     if (e.target.id === 'rotate') {
+        const arr = Array.from(ships.getPivot(active));
+        let x = parseInt(arr[0]);
+        let y = parseInt(arr[2]);
+
         if (!toggle) {
             toggle = true;
             ships.changeRotation(active, 'vertical');
             console.log(active + " rotation changed to " + toggle);
-            placeShip(ships.getCoords(active)[0], ships.getCoords(active)[1], true);
+            occupiedPCoords.forEach((item, i) => {
+                if (ships.getCoords(active).includes(item)) {
+                    occupiedPCoords.splice(i, 1);
+                    ships.getCoords(active).splice(ships.getCoords(active).indexOf(item), 1);
+                }
+            });
+            placeShip(x, y, true);
         } else {
             toggle = false;
             ships.changeRotation(active, 'horizontal');
             console.log(active + " rotation changed to " + toggle);
-            placeShip(ships.getCoords(active)[0], ships.getCoords(active)[1], true);
+            occupiedPCoords.forEach((item, i) => {
+                if (ships.getCoords(active).includes(item)) {
+                    occupiedPCoords.splice(i, 1);
+                    ships.getCoords(active).splice(ships.getCoords(active).indexOf(item), 1);
+                }
+            });
+            placeShip(x, y, true);
         }
     }
 
     if (e.target.id === "start") {
         // Choose a random starting point.        
-        while (allShipsPlaced('comp')) {
-            active = enemyFleet.shift();
-            const x = Math.floor(Math.random() * (9 - 0 + 1) + 0);
-            const y = Math.floor(Math.random() * (9 - 0 + 1) + 0);
-                placeShip(x, y, 'comp');
-            }
-            game.stage = "started";
-            startGame();
+        for (let i = 0; i < maps.getPreset(1).length; i++) {
+            occupiedCCoords.push(maps.getPreset(1)[i]);
+        }
+        game.stage = "started";
+        gameStart();
     }
 }
 
-const allShipsPlaced = (c) => {
-    if (c == 'player') { 
-       return playerPlacedShips.length === 5; 
+function allShipsPlaced(c) {
+    if (c == 'player') {
+        return playerPlacedShips.length === 5;
     } else if (c == 'comp') {
-       return computerPlacedShips.length === 5;
+        return computerPlacedShips.length === 5;
     } else {
         console.log("Error, no such fleet exists.");
     }
-};
+}
 
 function placeShip(x, y, fleet) {
-    if (fleet == 'comp'){
-        // Checks too see if all ships are placed.
-        if (allShipsPlaced(fleet)) {
-            alert("You're grid is full, please press play!");
-    
-            // Prevent duplication of same ship.
-        } else if (placedShips.find(el => el === active) === active) {
-            alert("You already placed this piece!");
-        } else {
-            // If ship rotation is set horizontal (default rotation), make sure there is space for the piece.
-            if (ships.getRot(active) == 'horizontal') {
-                // Prevent placing ships if ship length exceeds 
-                if ((ships.getSize(active) - 1) + x <= 10) {
-                    for (let i = 0; i < ships.getSize(active); i++) {
-                        const coord = `${x+i}-${y}`;
-                        const gridCell = document.getElementById(coord);
-                        gridCell.style.backgroundColor = "blue";
-                        occupiedPCoords.push(coord);
-                    }
-                } else if (ships.getSize(active) + y - 1 <= 10) {
-                    console.log("Danger, Will Robinson, danger.")
-                }
-                placedShips.push(active);
-                console.log(placedShips);
-                console.log(occupiedPCoords)
-            }
-        }
+    // Checks too see if all ships are placed.
+    if (allShipsPlaced(fleet)) {
+        alert("Your grid is full, please press play!");
+
+        // Prevent duplication of same ship.
+    } else if (playerPlacedShips.find(el => el === active) === active) {
+        alert("You already placed this piece!");
     } else {
-        if (allShipsPlaced(fleet)) {
-            console.log('Enemy fleet full.');
-        } else {
-            if (ships.getRot(active) == 'horizontal') {
+        // If ship rotation is set horizontal (default rotation), make sure there is space for the piece.
+        if (ships.getRot(active) == 'horizontal') {
+            // Prevent placing ships if ship length exceeds 
+            if ((ships.getSize(active) - 1) + x <= 9) {
                 for (let i = 0; i < ships.getSize(active); i++) {
-
+                    const coord = `${x+i}-${y}`;
+                    const gridCell = document.getElementById(coord);
+                    gridCell.style.backgroundColor = "blue";
+                    occupiedPCoords.push(coord);
+                    ships.changeCoords(active, x, y)
                 }
-
+            } else if (ships.getSize(active) + y - 1 <= 10) {
+                console.log("Danger, Will Robinson, danger.")
+                alert("You can't place a ship out of bounds!");
             }
+            playerPlacedShips.push(active);
+            console.log(playerPlacedShips);
+            console.log(occupiedPCoords);
         }
     }
 }
