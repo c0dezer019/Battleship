@@ -4,27 +4,31 @@ const ships = {
         size: 5,
         rotation: "horizontal",
         coords: [],
-        
+        pivot: null
     },
     battleship: {
         size: 4,
         rotation: "horizontal",
-        coords: []
+        coords: [],
+        pivot: null
     },
     cruiser: {
         size: 3,
         rotation: "horizontal",
-        coords: []
+        coords: [],
+        pivot: null
     },
     submarine: {
         size: 3,
         rotation: "horizontal",
-        coords: []
+        coords: [],
+        pivot: null
     },
     destroyer: {
         size: 2,
         rotation: "horizontal",
-        coords: []
+        coords: [],
+        pivot: null
     },
     changeRotation: function (type, newRot) {
         if (type === "carrier") {
@@ -50,6 +54,19 @@ const ships = {
             this.submarine.coords.push(x, y);
         } else if (type === "destroyer") {
             this.destroyer.coords.push(x, y);
+        }
+    },
+    setPivot: function(type, coords) {
+        if (type === "carrier") {
+            this.carrier.pivot = coords;
+        } else if (type === "battleship") {
+            this.battleship.pivot = coords;
+        } else if (type === "cruiser") {
+            this.cruiser.pivot = coords;
+        } else if (type === "submarine") {
+            this.submarine.pivot = coords;
+        } else if (type === "destroyer") {
+            this.destroyer.pivot = coords;
         }
     },
     getRot: function(type) {
@@ -89,6 +106,19 @@ const ships = {
             return this.submarine.coords;
         } else if (type === "destroyer") {
             return this.destroyer.coords;
+        }
+    },
+    getPivot: function(type) {
+        if (type === "carrier") {
+            return this.carrier.pivot;
+        } else if (type === "battleship") {
+            return this.battleship.pivot;
+        } else if (type === "cruiser") {
+            return this.cruiser.pivot;
+        } else if (type === "submarine") {
+            return this.submarine.pivot;
+        } else if (type === "destroyer") {
+            return  this.destroyer.pivot;
         }
     }
 }
