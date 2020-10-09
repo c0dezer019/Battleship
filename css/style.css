@@ -1,0 +1,158 @@
+body {
+    background-color: darkslategray;
+}
+
+body,
+html {
+    margin: 0;
+}
+
+header {
+    height: 8vh;
+    padding: 25px 0;
+    text-align: center;
+}
+
+header img {
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 8vh;
+}
+
+section {
+    margin: 10px auto 25px auto;
+    height: 82vh;
+    width: 78.1%;
+}
+
+#container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.statusBoard {
+    display: inline-block;
+    height: 100%;
+    width: 250px;
+}
+
+#computerBoard,
+#playerBoard {
+    position: absolute;
+}
+
+#computerBoard {
+    background: no-repeat url('../images/metal_panelRight.jpg');
+    right: 490px;
+}
+
+#playerBoard {
+    background: no-repeat url('../images/metal_panelLeft.jpg');
+    left: 159px;
+}
+
+#gridContainer {
+    height: 100%;
+    position: absolute;
+    left: 410px;
+}
+
+#start {
+    position: relative;
+    top: 120px;
+    left: 80px;
+    
+}
+
+:root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+}
+
+#playerGridContainer {
+    background-color: white;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    width: 100%;
+}
+
+#computerGridContainer {
+    background-color: white;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    width: 100%;
+    margin-top: 55px;
+}
+
+.grid-item {
+    padding: 1em;
+    border: 1px solid black;
+    text-align: center;
+    height: 1px;
+    width: 1px;
+}
+
+.gamePieces {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    position: relative;
+    top: 120px;
+    left: 35px;
+}
+
+.shipPiece {
+    height: 40px;
+    width: 25px;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
+
+.healthPip {
+    border: 2px solid black;
+    width: 100%;
+    height: 100%;
+    Display: block;
+}
+
+.theButtonZone {
+    display: inline-block;
+    position: relative;
+    top: 20px;
+    left: -50px;
+}
+
+
+#startGame {
+    border-radius: 25%;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 90px;
+    -webkit-border-radius: 25%;
+    -moz-border-radius: 25%;
+    -ms-border-radius: 25%;
+    -o-border-radius: 25%;
+}
+
+#rotate {
+    margin-left: 20px;
+    position: relative;
+    left: 80px;
+    top: 120px;
+}
+
+footer {
+    background-color: #313131;
+    height: 3vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
