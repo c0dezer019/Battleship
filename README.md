@@ -1,5 +1,16 @@
 # Battleship
 
+---
+## Motivation
+
+I wanted to build something close to the classic Battleship game to push my self and challenge my coding skills. 
+
+---
+## Screenshots
+![playing grid](https://i.imgur.com/mZ3Fw9X.png)
+
+---
+
 * ### **Main Menu**
   * The player can start a classic gamemode by pressing Classic Mode.
   * The player can start an advanced game mode by pressing Advanced Mode.
@@ -20,3 +31,20 @@
       * The player can deploy a nuke to wipe the opposing fleet out.
     * #### **Timed Mode**
       * The player wins by accumulating the most points or eliminating the opposing fleet before the timer runs out.
+      
+ ---
+ ## Technologies
+ - HTML/CSS/JS
+ 
+ ---
+ ## Credits
+ 
+ A special thanks to my instructors for helping me get to where I am with this and also to @jcLucio for some inspiration.
+ 
+ ---
+ ## Future Development
+ 
+ - Fix rotation issues.
+ - Add computer combat
+ - Random placement for computer pieces.
+ - Add win/losing screen
