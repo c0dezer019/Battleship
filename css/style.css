@@ -29,6 +29,7 @@ section {
     position: relative;
     height: 100%;
     width: 100%;
+    left: 150px;
 }
 
 .statusBoard {
@@ -87,7 +88,15 @@ section {
     margin-top: 55px;
 }
 
-.grid-item {
+.player-grid-item {
+    padding: 1em;
+    border: 1px solid black;
+    text-align: center;
+    height: 1px;
+    width: 1px;
+}
+
+.comp-grid-item {
     padding: 1em;
     border: 1px solid black;
     text-align: center;

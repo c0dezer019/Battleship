@@ -14,7 +14,7 @@ function generateGrid(row, col) {
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
             const cell = document.createElement('div');
-            pGridContainer.appendChild(cell).className = "grid-item";
+            pGridContainer.appendChild(cell).className = "player-grid-item";
             const cellId = `${j}-${i}`;
             // console.log(cellId);
             // Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on. 
@@ -29,7 +29,7 @@ function generateGrid(row, col) {
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
             const cell = document.createElement('div');
-            cGridContainer.appendChild(cell).className = "grid-item";
+            cGridContainer.appendChild(cell).className = "comp-grid-item";
             const cellId = `c${j}-${i}`;
             cell.setAttribute('id', cellId);
             cGridLayout.push(cellId);
@@ -71,7 +71,7 @@ function handleClick(e) {
         }
     }
 
-    if (e.target.className === "grid-item") {
+    if (e.target.className === "player-grid-item") {
         if (game.stage == 'staging') {
             if (active === null) {
                 console.log(e.target.id);
