@@ -20,7 +20,7 @@ function gameStart() {
     document.querySelector('.theButtonZone').remove()
     // No need for player to attack own field or select ship pieces.
     shipSelect.removeEventListener('click', handleClick);
-    pGridCoords.removeEventListener('click', handleClick);
+    //pGridCoords.removeEventListener('click', handleClick);
     game.changeStage('started');
 
     console.log(game.turn)
