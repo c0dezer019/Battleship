@@ -1,4 +1,13 @@
 // Handles the combat for both fleets.
+
+const fireControl = {
+    player: {
+        hits: []
+    },
+    computer: {
+        hits: []
+    }
+}
 const game = {
     stage: 'staging', //'not started', 'staging', 'started', 'ended'
     turn: 'player', // Who's turn is it
@@ -21,6 +30,25 @@ const checkCoords = (coords) => {
     }
 };
 
+const turnController = () => {
+    if (game.getTurn() == 'player') {
+        const computerGrid = document.querySelectorAll('.comp-grid-item');
+        const combatHandler = (e) => {
+            if (!fireControl.player.hits.includes(e.target.id)) {
+                if (checkCoords(e.target.id)) {
+                    document.getElementById(e.target.id).style.backgroundColor = 'red';
+                    fireControl.player.hits.push(e.target.id)
+                } else {
+                    document.getElementById(e.target.id).style.backgroundColor = 'yellow';
+                    fireControl.player.hits.push(e.target.id)
+                }
+            }
+        };
+
+        computerGrid.forEach(el => el.addEventListener('click', combatHandler));
+    }
+}
+
 //Prep the field for combat.
 function gameStart() {
     document.querySelector('.theButtonZone').remove()
@@ -29,27 +57,5 @@ function gameStart() {
     pGridCoords.removeEventListener('click', handleClick);
     game.changeStage('started');
 
-    console.log(game.turn)
-    if (game.getStage() == 'started') {
-        console.log('Entering started')
-        if (game.getTurn() == 'player') {
-            console.log('Entering turn')
-            const computerGrid = document.querySelectorAll('.comp-grid-item');
-            computerGrid.forEach(el => el.addEventListener('click', combatHandler));
-
-            function combatHandler(e) {
-                if (checkCoords(e.target.id)) {
-                    console.log(e.target.id)
-                    document.getElementById(e.target.id).style.backgroundColor = 'red';
-                    console.log('Hit!');
-                } else {
-                    console.log("Something isn't working right.")
-                    console.log(e.target.id)
-                }
-            }
-        } else {
-            console.log("what is going on here?")
-        }
-
-    }
+    turnController();
 }

@@ -27,15 +27,15 @@ Todo:
                     ☐ Find clicked cell coords in occuppiedPCoords.
             ✘ Block spaces immediately surrounding the game piece. @cancelled(20-10-08 11:59)
         ☐ Make a function that places computer pieces randomly.
-    ☐ Draw out a grid space for computer.
-        ☐ Give each cell an ID.
+    ✔ Draw out a grid space for computer. @done(20-10-09 13:53)
+        ✔ Give each cell an ID. @done(20-10-09 13:53)
     ☐ Combat logic
-        ☐ Player selects square on computer's field.
-            ☐ If cell is occuppied, turn cell orange.
+        ✔ Player selects square on computer's field. @done(20-10-09 13:53)
+            ✔ If cell is occuppied, turn cell red. @done(20-10-09 13:54)
             ☐ If cell is empty, turn cell white.
             ☐ Each cell can only bit hit once.
             ☐ Deduct from ship coordinates.
-                ☐ If ship coords reaches, zero the ship is sunck
+                ☐ If ship coords reaches zero, the ship is sunck.
     ✘ Draw the rest of the pieces. @cancelled(20-10-07 14:14)
         ✘ Add pieces into the game. @cancelled(20-10-07 14:14)
-    ☐ Expand grid
+    ✔ Expand grid @done(20-10-09 13:54)

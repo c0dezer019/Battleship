@@ -44,14 +44,18 @@ let toggle = false;
 let active = null;
 
 const pGridCoords = document.getElementById('playerGridContainer');
-const cGridCoords = document.getElementById('computerGridContainer');
-const rotateBtn = document.getElementById('rotate');
-const shipSelect = document.getElementById('playerPieces');
-const startBtn = document.getElementById('start');
 pGridCoords.addEventListener('click', handleClick);
+
+const cGridCoords = document.getElementById('computerGridContainer');
 cGridCoords.addEventListener('click', handleClick);
+
+const rotateBtn = document.getElementById('rotate');
 rotateBtn.addEventListener('click', handleClick);
+
+const shipSelect = document.getElementById('playerPieces');
 shipSelect.addEventListener('click', handleClick);
+
+const startBtn = document.getElementById('start');
 startBtn.addEventListener('click', handleClick);
 
 
