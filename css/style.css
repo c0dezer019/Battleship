@@ -1,5 +1,6 @@
 body {
     background-color: darkslategray;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body,
@@ -8,7 +9,7 @@ html {
 }
 
 header {
-    height: 8vh;
+    height: 100%;
     padding: 25px 0;
     text-align: center;
 }
@@ -45,7 +46,7 @@ section {
 
 #computerBoard {
     background: no-repeat url('../images/metal_panelRight.jpg');
-    right: 490px;
+    right: 498px;
 }
 
 #playerBoard {
@@ -85,7 +86,7 @@ section {
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     width: 100%;
-    margin-top: 55px;
+    margin-top: 76px;
 }
 
 .player-grid-item {

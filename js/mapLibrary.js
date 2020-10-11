@@ -20,8 +20,6 @@ const maps = {
     }
 }
 
-console.log(maps.getPreset(1)[1])
-
 const dupeChecker = (preset, coords) => maps.getPreset(preset).includes(coords);
 
 function randCoords() { 

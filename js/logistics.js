@@ -43,7 +43,7 @@ const ships = {
             this.destroyer.rotation = newRot;
         }
     },
-    changeCoords: function(type, x, y) {
+    changeCoords: function (type, x, y) {
         if (type === "carrier") {
             this.carrier.coords.push(x, y);
         } else if (type === "battleship") {
@@ -56,7 +56,7 @@ const ships = {
             this.destroyer.coords.push(x, y);
         }
     },
-    setPivot: function(type, coords) {
+    setPivot: function (type, coords) {
         if (type === "carrier") {
             this.carrier.pivot = coords;
         } else if (type === "battleship") {
@@ -69,7 +69,7 @@ const ships = {
             this.destroyer.pivot = coords;
         }
     },
-    getRot: function(type) {
+    getRot: function (type) {
         if (type === "carrier") {
             return this.carrier.rotation;
         } else if (type === "battleship") {
@@ -82,7 +82,7 @@ const ships = {
             return this.destroyer.rotation
         }
     },
-    getSize: function(type) {
+    getSize: function (type) {
         if (type === "carrier") {
             return this.carrier.size;
         } else if (type === "battleship") {
@@ -95,7 +95,7 @@ const ships = {
             return this.destroyer.size;
         }
     },
-    getCoords: function(type) {
+    getCoords: function (type) {
         if (type === "carrier") {
             return this.carrier.coords;
         } else if (type === "battleship") {
@@ -108,7 +108,7 @@ const ships = {
             return this.destroyer.coords;
         }
     },
-    getPivot: function(type) {
+    getPivot: function (type) {
         if (type === "carrier") {
             return this.carrier.pivot;
         } else if (type === "battleship") {
@@ -118,7 +118,7 @@ const ships = {
         } else if (type === "submarine") {
             return this.submarine.pivot;
         } else if (type === "destroyer") {
-            return  this.destroyer.pivot;
+            return this.destroyer.pivot;
         }
     }
 }
@@ -202,3 +202,6 @@ const rotBtn = document.createElement('button');
 rotBtn.setAttribute('id', 'rotate');
 rotBtn.innerText = 'Rotate';
 document.querySelector('.theButtonZone').appendChild(rotBtn);
+
+const notice = document.getElementById('content');
+const modTitle = document.getElementById('modalTitle');
