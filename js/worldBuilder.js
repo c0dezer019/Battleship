@@ -54,7 +54,7 @@ rotateBtn.addEventListener('click', handleClick);
 shipSelect.addEventListener('click', handleClick);
 startBtn.addEventListener('click', handleClick);
 
-
+const allShipsPlaced = () => playerPlacedShips.length === 5;
 
 function handleClick(e) {
     if (e.target.id === "carrier" || e.target.id === "battleship" || e.target.id === "cruiser" || e.target.id === "submarine" || e.target.id === "destroyer") {
@@ -74,9 +74,7 @@ function handleClick(e) {
     if (e.target.className === "player-grid-item") {
         if (game.stage == 'staging') {
             if (active === null) {
-                console.log(e.target.id);
-                console.log(e.target.className);
-                // alert("Please select a piece first.");
+                alert("Please select a piece first.");
                 // initiates the placeShip function to 'paint' the ship on the graph.
             } else {
                 const arr = Array.from(e.target.id);
@@ -120,27 +118,21 @@ function handleClick(e) {
     }
 
     if (e.target.id === "start") {
-        // Choose a random starting point.        
-        for (let i = 0; i < maps.getPreset(1).length; i++) {
-            occupiedCCoords.push(maps.getPreset(1)[i]);
+        if (allShipsPlaced()) {
+            for (let i = 0; i < maps.getPreset(1).length; i++) {
+                occupiedCCoords.push(maps.getPreset(1)[i]);
+            }
+            console.log(occupiedCCoords)
+            gameStart();
+        } else {
+            alert('Please place all your pieces first.');
         }
-        gameStart();
     }
 }
 
-function allShipsPlaced(c) {
-    if (c == 'player') {
-        return playerPlacedShips.length === 5;
-    } else if (c == 'comp') {
-        return computerPlacedShips.length === 5;
-    } else {
-        console.log("Error, no such fleet exists.");
-    }
-}
-
-function placeShip(x, y, fleet) {
+function placeShip(x, y) {
     // Checks too see if all ships are placed.
-    if (allShipsPlaced(fleet)) {
+    if (allShipsPlaced()) {
         alert("Your grid is full, please press play!");
 
         // Prevent duplication of same ship.
@@ -168,4 +160,3 @@ function placeShip(x, y, fleet) {
         }
     }
 }
-
