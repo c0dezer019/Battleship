@@ -151,7 +151,7 @@ function theCon() {
                             $("#alertModal").modal();
                         });
                         game.changeStage('ended');
-                        window.open('')
+                        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
                     }
                     game.changeTurn('player');
                     theCon();
