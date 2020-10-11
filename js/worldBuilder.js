@@ -61,7 +61,7 @@ function handleClick(e) {
         if (active === null) {
             active = e.target.id;
             document.querySelectorAll(`#${e.target.id}`).forEach(el => el.style.borderColor = "yellow");
-        
+
         } else {
             document.querySelectorAll(`#${active}`).forEach(el => el.style.borderColor = "black");
             active = e.target.id;
@@ -72,14 +72,14 @@ function handleClick(e) {
     if (e.target.className === "player-grid-item") {
         if (game.stage == 'staging') {
             if (active === null) {
-                alert("Please select a piece first.");
+                warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>Please select a piece first!</span></div>");
                 // initiates the placeShip function to 'paint' the ship on the graph.
             } else {
                 const arr = Array.from(e.target.id);
                 let x = parseInt(arr[0]);
                 let y = parseInt(arr[2]);
                 ships.setPivot(active, e.target.id);
-                placeShip(x, y, 'player');
+                placeShip(x, y);
             }
         }
     }
@@ -98,7 +98,7 @@ function handleClick(e) {
                     ships.getCoords(active).splice(ships.getCoords(active).indexOf(item), 1);
                 }
             });
-            placeShip(x, y, true);
+            placeShip(x, y);
         } else {
             toggle = false;
             ships.changeRotation(active, 'horizontal');
@@ -108,7 +108,7 @@ function handleClick(e) {
                     ships.getCoords(active).splice(ships.getCoords(active).indexOf(item), 1);
                 }
             });
-            placeShip(x, y, true);
+            placeShip(x, y);
         }
     }
 
@@ -119,7 +119,7 @@ function handleClick(e) {
             }
             gameStart();
         } else {
-            alert('Please place all your pieces first.');
+            warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>Please place all of your pieces first.</span></div>");
         }
     }
 }
@@ -127,26 +127,26 @@ function handleClick(e) {
 function placeShip(x, y) {
     // Checks too see if all ships are placed.
     if (allShipsPlaced()) {
-        warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You can't place a ship out of bounds!</span></div>");
+        warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You're fleet is already full, please start the game.</span></div>");
 
         // Prevent duplication of same ship.
     } else if (playerPlacedShips.find(el => el === active) === active) {
         warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You can't place the same ship more than once!</span></div>");
+    } else if (ships.getSize(active) + x - 1 >= 10) {
+        warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You can't place a ship out of bounds!</span></div>");
+        console.log(ships.getSize(active) + x - 1)
     } else {
         // If ship rotation is set horizontal (default rotation), make sure there is space for the piece.
         if (ships.getRot(active) == 'horizontal') {
-            // Prevent placing ships if ship length exceeds 
             if ((ships.getSize(active) - 1) + x <= 9) {
                 for (let i = 0; i < ships.getSize(active); i++) {
                     const coord = `${x+i}-${y}`;
                     const gridCell = document.getElementById(coord);
                     gridCell.style.backgroundColor = "blue";
                     occupiedPCoords.push(coord);
-                    ships.changeCoords(active, x, y)
-                    playerPlacedShips.push(active);
+                    ships.changeCoords(active, x, y);
                 }
-            } else if (ships.getSize(active) + y - 1 <= 10) {
-                warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You can't place a ship out of bounds!</span></div>");
+                playerPlacedShips.push(active);
             }
         }
     }
