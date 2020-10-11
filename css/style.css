@@ -2,12 +2,6 @@ body {
     background-color: darkslategray;
     font-family: 'Times New Roman', Times, serif;
 }
-
-body,
-html {
-    margin: 0;
-}
-
 header {
     height: 100%;
     padding: 25px 0;
