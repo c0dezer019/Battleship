@@ -95,11 +95,11 @@ function theCon() {
                         document.getElementById(e.target.id).style.backgroundColor = 'red';
                         radar.addHits('player', e.target.id);
                         const index = occupiedCCoords.indexOf(occupiedCCoords.find(el => el == e.target.id));
-                        console.log(index);
+                        
 
                         if (index > -1) {
                             occupiedCCoords.splice(index, 1);
-                            console.log("Computer health: " + occupiedCCoords);
+                           
                         }
                         // If computer has no more occupied spaces left.
                         if (occupiedCCoords.length == 0) {
@@ -135,11 +135,9 @@ function theCon() {
                     document.getElementById(target).style.backgroundColor = 'red';
                     radar.addHits('computer', target);
                     const index = occupiedPCoords.indexOf(occupiedPCoords.find(el => el == target));
-                    console.log(index);
 
                     if (index > -1) {
                         occupiedPCoords.splice(index, 1);
-                        console.log("Player health: " + occupiedPCoords)
                     }
                     // if player has no more occupied spaces left.
                     if (occupiedPCoords.length == 0) {

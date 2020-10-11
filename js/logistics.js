@@ -205,3 +205,11 @@ document.querySelector('.theButtonZone').appendChild(rotBtn);
 
 const notice = document.getElementById('content');
 const modTitle = document.getElementById('modalTitle');
+
+function warning (title, msg) {
+    modTitle.innerText = title.toString();
+    notice.innerHTML = msg.toString();
+    $(document).ready(function () {
+        $("#alertModal").modal();
+    });
+}

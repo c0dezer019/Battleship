@@ -1,5 +1,5 @@
 body {
-    background-color: darkslategray;
+    background-color: darkslategray !important;
     font-family: 'Times New Roman', Times, serif;
 }
 header {
@@ -131,6 +131,12 @@ section {
     position: relative;
     top: 20px;
     left: -50px;
+}
+
+.warning_icon {
+    height: 60px;
+    width: 60px;
+    margin-right: 8px:
 }
 
 

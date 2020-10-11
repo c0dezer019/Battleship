@@ -16,7 +16,6 @@ function generateGrid(row, col) {
             const cell = document.createElement('div');
             pGridContainer.appendChild(cell).className = "player-grid-item";
             const cellId = `${j}-${i}`;
-            // console.log(cellId);
             // Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on. 
             cell.setAttribute('id', cellId);
             pGridLayout.push(cellId);
@@ -62,12 +61,11 @@ function handleClick(e) {
         if (active === null) {
             active = e.target.id;
             document.querySelectorAll(`#${e.target.id}`).forEach(el => el.style.borderColor = "yellow");
-            console.log(active);
+        
         } else {
             document.querySelectorAll(`#${active}`).forEach(el => el.style.borderColor = "black");
             active = e.target.id;
             document.querySelectorAll(`#${e.target.id}`).forEach(el => el.style.borderColor = "yellow")
-            console.log("New active: " + active);
         }
     }
 
@@ -82,7 +80,6 @@ function handleClick(e) {
                 let y = parseInt(arr[2]);
                 ships.setPivot(active, e.target.id);
                 placeShip(x, y, 'player');
-                console.log("Poke")
             }
         }
     }
@@ -95,7 +92,6 @@ function handleClick(e) {
         if (!toggle) {
             toggle = true;
             ships.changeRotation(active, 'vertical');
-            console.log(active + " rotation changed to " + toggle);
             occupiedPCoords.forEach((item, i) => {
                 if (ships.getCoords(active).includes(item)) {
                     occupiedPCoords.splice(i, 1);
@@ -106,7 +102,6 @@ function handleClick(e) {
         } else {
             toggle = false;
             ships.changeRotation(active, 'horizontal');
-            console.log(active + " rotation changed to " + toggle);
             occupiedPCoords.forEach((item, i) => {
                 if (ships.getCoords(active).includes(item)) {
                     occupiedPCoords.splice(i, 1);
@@ -122,7 +117,6 @@ function handleClick(e) {
             for (let i = 0; i < maps.getPreset(1).length; i++) {
                 occupiedCCoords.push(maps.getPreset(1)[i]);
             }
-            console.log(occupiedCCoords)
             gameStart();
         } else {
             alert('Please place all your pieces first.');
@@ -133,11 +127,11 @@ function handleClick(e) {
 function placeShip(x, y) {
     // Checks too see if all ships are placed.
     if (allShipsPlaced()) {
-        alert("Your grid is full, please press play!");
+        warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You can't place a ship out of bounds!</span></div>");
 
         // Prevent duplication of same ship.
     } else if (playerPlacedShips.find(el => el === active) === active) {
-        alert("You already placed this piece!");
+        warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You can't place the same ship more than once!</span></div>");
     } else {
         // If ship rotation is set horizontal (default rotation), make sure there is space for the piece.
         if (ships.getRot(active) == 'horizontal') {
@@ -149,14 +143,11 @@ function placeShip(x, y) {
                     gridCell.style.backgroundColor = "blue";
                     occupiedPCoords.push(coord);
                     ships.changeCoords(active, x, y)
+                    playerPlacedShips.push(active);
                 }
             } else if (ships.getSize(active) + y - 1 <= 10) {
-                console.log("Danger, Will Robinson, danger.")
-                alert("You can't place a ship out of bounds!");
+                warning('Warning!', "<div style=\"text-align: center;\"><img class=\"warning_icon\" src=\"images/warning.png\" alt=\"warning_icon\"></img><span>You can't place a ship out of bounds!</span></div>");
             }
-            playerPlacedShips.push(active);
-            console.log(playerPlacedShips);
-            console.log(occupiedPCoords);
         }
     }
 }
