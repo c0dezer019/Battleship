@@ -99,8 +99,12 @@ function theCon() {
 
                         if (index > -1) {
                             occupiedCCoords.splice(index, 1);
-                        } else { // If computer has no more occupied spaces left.
+                            console.log("Computer health: " + occupiedCCoords);
+                        }
+                        // If computer has no more occupied spaces left.
+                        if (occupiedCCoords.length == 0) {
                             // VICTORY!
+                            computerGrid.forEach(el => el.removeEventListener('click', combatHandler));
                             modTitle.innerText = "Victory!"
                             notice.innerText = "Congratulations, Admiral. You have beaten the enemy fleet.";
                             $(document).ready(function () {
@@ -121,7 +125,8 @@ function theCon() {
 
         } else {
             computerGrid.forEach(el => el.removeEventListener('click', combatHandler));
-            let target; pGridLayout[Math.floor(Math.random() * ((pGridLayout.length - 1) - 0 + 1) + 0)];
+            let target;
+            pGridLayout[Math.floor(Math.random() * ((pGridLayout.length - 1) - 0 + 1) + 0)];
             do {
                 target = pGridLayout[Math.floor(Math.random() * ((pGridLayout.length - 1) - 0 + 1) + 0)];
             } while (radar.getHits('computer').includes(target))
@@ -134,18 +139,23 @@ function theCon() {
 
                     if (index > -1) {
                         occupiedPCoords.splice(index, 1);
-                    } else { // if player has no more occupied spaces left.
+                        console.log("Player health: " + occupiedPCoords)
+                    }
+                    // if player has no more occupied spaces left.
+                    if (occupiedPCoords.length == 0) {
                         // Defeated
+                        computerGrid.forEach(el => el.removeEventListener('click', combatHandler));
                         modTitle.innerText = "Defeated"
                         notice.innerHTML = "<img src=\"https://memegenerator.net/img/instances/66976681/you-have-failed-me-for-the-last-time-admiral.jpg\" alt=\"You have failed me for the last time, Admiral.\" style=\"width: 100%; height: 100%;\"></img>"
                         $(document).ready(function () {
                             $("#alertModal").modal();
                         });
                         game.changeStage('ended');
+                        window.open('')
                     }
                     game.changeTurn('player');
                     theCon();
-                // Miss
+                    // Miss
                 } else {
                     document.getElementById(target).style.backgroundColor = 'yellow';
                     radar.addHits('computer', target);
