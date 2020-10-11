@@ -134,6 +134,12 @@ section {
     left: -50px;
 }
 
+.warning_icon {
+    height: 60px;
+    width: 60px;
+    margin-right: 8px;
+}
+
 
 #startGame {
     border-radius: 25%;
