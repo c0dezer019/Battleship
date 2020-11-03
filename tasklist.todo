@@ -1,0 +1,18 @@
+Refactor:
+	 □  Reorganize CSS
+		 □  General > Specific
+	 □  Reorganize Javascript
+		 □ Globals > Listeners > Functions
+		 □  Move code types into different files.
+	 □  Break up code into smaller functions.
+	 □  DRY code.
+
+Complete Game:
+	 □  Make ships rotatable.
+	 	 □  Reverse of placing ships horizontally.
+	 □  Add a few more custom maps.
+	 □  Add ship collision prevention.
+		 □  Prevent ship placement or rotation if piece of ship tries to occupy same space as another.
+
+Stretch:
+	 □  Randomizer that places enemy ships automatically.
