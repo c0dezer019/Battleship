@@ -30,96 +30,51 @@ const ships = {
         coords: [],
         pivot: null
     },
-    changeRotation: function (type, newRot) {
-        if (type === "carrier") {
-            this.carrier.rotation = newRot;
-        } else if (type === "battleship") {
-            this.battleship.rotation = newRot;
-        } else if (type === "cruiser") {
-            this.cruiser.rotation = newRot;
-        } else if (type === "submarine") {
-            this.submarine.rotation = newRot;
-        } else if (type === "destroyer") {
-            this.destroyer.rotation = newRot;
-        }
+    changeSettings: function (type, setting, args) {
+            (type == 'battleship') ? (setting == 'rotation') ? this.battleship.rotation = args :
+            (setting == 'coords') ? this.battleship.coords.push(args[0], args[1]) :
+            (setting == 'pivot') ? this.battleship.pivot = args : console.log('invalid setting') :
+
+            (type == 'carrier') ? (setting == 'rotation') ? this.carrier.rotation = args :
+            (setting == 'coords') ? this.carrier.coords.push(args[0], args[1]) :
+            (setting == 'pivot') ? this.carrier.pivot = args : console.log('invalid setting') :
+
+            (type == 'cruiser') ? (setting == 'rotation') ? this.cruiser.rotation = args :
+            (setting == 'coords') ? this.cruiser.coords.push(args[0], args[1]) :
+            (setting == 'pivot') ? this.cruiser.pivot = args : console.log('invalid setting') :
+
+            (type == 'destroyer') ? (setting == 'rotation') ? this.destroyer.rotation = args :
+            (setting == 'coords') ? this.destroyer.coords.push(args[0], args[1]) :
+            (setting == 'pivot') ? this.destroyer.pivot = args : console.log('invalid setting') :
+
+            (type == 'submarine') ? (setting == 'rotation') ? this.submarine.rotation = args :
+            (setting == 'coords') ? this.submarine.coords.push(args[0], args[1]) :
+            (setting == 'pivot') ? this.submarine.pivot = args : console.log('invalid setting') :
+
+            console.log('No such piece exists');
     },
-    changeCoords: function (type, x, y) {
-        if (type === "carrier") {
-            this.carrier.coords.push(x, y);
-        } else if (type === "battleship") {
-            this.battleship.coords.push(x, y);
-        } else if (type === "cruiser") {
-            this.cruiser.coords.push(x, y);
-        } else if (type === "submarine") {
-            this.submarine.coords.push(x, y);
-        } else if (type === "destroyer") {
-            this.destroyer.coords.push(x, y);
-        }
-    },
-    setPivot: function (type, coords) {
-        if (type === "carrier") {
-            this.carrier.pivot = coords;
-        } else if (type === "battleship") {
-            this.battleship.pivot = coords;
-        } else if (type === "cruiser") {
-            this.cruiser.pivot = coords;
-        } else if (type === "submarine") {
-            this.submarine.pivot = coords;
-        } else if (type === "destroyer") {
-            this.destroyer.pivot = coords;
-        }
-    },
-    getRot: function (type) {
-        if (type === "carrier") {
-            return this.carrier.rotation;
-        } else if (type === "battleship") {
-            return this.battleship.rotation;
-        } else if (type === "cruiser") {
-            return this.cruiser.rotation;
-        } else if (type === "submarine") {
-            return this.submarine.rotation;
-        } else if (type === "destroyer") {
-            return this.destroyer.rotation
-        }
-    },
-    getSize: function (type) {
-        if (type === "carrier") {
-            return this.carrier.size;
-        } else if (type === "battleship") {
-            return this.battleship.size;
-        } else if (type === "cruiser") {
-            return this.cruiser.size;
-        } else if (type === "submarine") {
-            return this.submarine.size;
-        } else if (type === "destroyer") {
-            return this.destroyer.size;
-        }
-    },
-    getCoords: function (type) {
-        if (type === "carrier") {
-            return this.carrier.coords;
-        } else if (type === "battleship") {
-            return this.battleship.coords;
-        } else if (type === "cruiser") {
-            return this.cruiser.coords;
-        } else if (type === "submarine") {
-            return this.submarine.coords;
-        } else if (type === "destroyer") {
-            return this.destroyer.coords;
-        }
-    },
-    getPivot: function (type) {
-        if (type === "carrier") {
-            return this.carrier.pivot;
-        } else if (type === "battleship") {
-            return this.battleship.pivot;
-        } else if (type === "cruiser") {
-            return this.cruiser.pivot;
-        } else if (type === "submarine") {
-            return this.submarine.pivot;
-        } else if (type === "destroyer") {
-            return this.destroyer.pivot;
-        }
+    getSettings: function (type, setting) {
+            (type == 'battleship') ? (setting == 'rotation') ? console.log(this.battleship.rotation) :
+            (setting == 'coords') ? this.battleship.coords :
+            (setting == 'pivot') ? this.battleship.pivot : console.log('invalid setting') :
+
+            (type == 'carrier') ? (setting == 'rotation') ? this.carrier.rotation :
+            (setting == 'coords') ? this.carrier.coords :
+            (setting == 'pivot') ? this.carrier.pivot : console.log('invalid setting') :
+
+            (type == 'cruiser') ? (setting == 'rotation') ? this.cruiser.rotation :
+            (setting == 'coords') ? this.cruiser.coords :
+            (setting == 'pivot') ? this.cruiser.pivot : console.log('invalid setting') :
+
+            (type == 'destroyer') ? (setting == 'rotation') ? this.destroyer.rotation :
+            (setting == 'coords') ? this.destroyer.coords :
+            (setting == 'pivot') ? this.destroyer.pivot : console.log('invalid setting') :
+
+            (type == 'submarine') ? (setting == 'rotation') ? this.submarine.rotation :
+            (setting == 'coords') ? this.submarine.coords :
+            (setting == 'pivot') ? this.submarine.pivot : console.log('invalid setting') :
+
+            console.log('No such piece exists');
     }
 }
 
@@ -206,7 +161,7 @@ document.querySelector('.theButtonZone').appendChild(rotBtn);
 const notice = document.getElementById('content');
 const modTitle = document.getElementById('modalTitle');
 
-function warning (title, msg) {
+function warning(title, msg) {
     modTitle.innerText = title.toString();
     notice.innerHTML = msg.toString();
     $(document).ready(function () {

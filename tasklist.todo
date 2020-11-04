@@ -5,7 +5,8 @@ Refactor:
 		 □ Globals > Listeners > Functions
 		 □  Move code types into different files.
 	 □  Break up code into smaller functions.
-	 □  DRY code.
+	 □  DRY codse. @started(20-11-03 17:21)
+	 	     □  Consolidate Object functions into one singular function. @started(20-11-03 17:21)
 
 Complete Game:
 	 □  Make ships rotatable.
