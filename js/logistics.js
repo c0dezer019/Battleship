@@ -1,80 +1,54 @@
 // Makes the game pieces that will make up the board and assign them to the board
-const ships = {
-    carrier: {
-        size: 5,
-        rotation: "horizontal",
-        coords: [],
-        pivot: null
+const shipState = {
+    car: (rot, coords, pivot) => {
+        return {
+            carrier: {
+                size: 5,
+                rotation: !rot ? 'horizontal' : rot,
+                coords: !coords ? [] : coords,
+                pivot: !pivot ? null : pivot
+            }
+        }
     },
-    battleship: {
-        size: 4,
-        rotation: "horizontal",
-        coords: [],
-        pivot: null
+    bat: (rot, coords, pivot) => {
+        return {
+            battleship: {
+                size: 4,
+                rotation: !rot ? 'horizontal' : rot,
+                coords: !coords ? [] : coords,
+                pivot: !pivot ? null : pivot
+            }
+        }
     },
-    cruiser: {
-        size: 3,
-        rotation: "horizontal",
-        coords: [],
-        pivot: null
+    cru: (rot, coords, pivot) => {
+        return {
+            cruiser: {
+                size: 3,
+                rotation: !rot ? 'horizontal' : rot,
+                coords: !coords ? [] : coords,
+                pivot: !pivot ? null : pivot
+            }
+        }
     },
-    submarine: {
-        size: 3,
-        rotation: "horizontal",
-        coords: [],
-        pivot: null
+    sub: (rot, coords, pivot) => {
+        return {
+            submarine: {
+                size: 3,
+                rotation: !rot ? 'horizontal' : rot,
+                coords: !coords ? [] : coords,
+                pivot: !pivot ? null : pivot
+            }
+        }
     },
-    destroyer: {
-        size: 2,
-        rotation: "horizontal",
-        coords: [],
-        pivot: null
-    },
-    changeSettings: function (type, setting, args) {
-            (type == 'battleship') ? (setting == 'rotation') ? this.battleship.rotation = args :
-            (setting == 'coords') ? this.battleship.coords.push(args[0], args[1]) :
-            (setting == 'pivot') ? this.battleship.pivot = args : console.log('invalid setting') :
-
-            (type == 'carrier') ? (setting == 'rotation') ? this.carrier.rotation = args :
-            (setting == 'coords') ? this.carrier.coords.push(args[0], args[1]) :
-            (setting == 'pivot') ? this.carrier.pivot = args : console.log('invalid setting') :
-
-            (type == 'cruiser') ? (setting == 'rotation') ? this.cruiser.rotation = args :
-            (setting == 'coords') ? this.cruiser.coords.push(args[0], args[1]) :
-            (setting == 'pivot') ? this.cruiser.pivot = args : console.log('invalid setting') :
-
-            (type == 'destroyer') ? (setting == 'rotation') ? this.destroyer.rotation = args :
-            (setting == 'coords') ? this.destroyer.coords.push(args[0], args[1]) :
-            (setting == 'pivot') ? this.destroyer.pivot = args : console.log('invalid setting') :
-
-            (type == 'submarine') ? (setting == 'rotation') ? this.submarine.rotation = args :
-            (setting == 'coords') ? this.submarine.coords.push(args[0], args[1]) :
-            (setting == 'pivot') ? this.submarine.pivot = args : console.log('invalid setting') :
-
-            console.log('No such piece exists');
-    },
-    getSettings: function (type, setting) {
-            (type == 'battleship') ? (setting == 'rotation') ? console.log(this.battleship.rotation) :
-            (setting == 'coords') ? this.battleship.coords :
-            (setting == 'pivot') ? this.battleship.pivot : console.log('invalid setting') :
-
-            (type == 'carrier') ? (setting == 'rotation') ? this.carrier.rotation :
-            (setting == 'coords') ? this.carrier.coords :
-            (setting == 'pivot') ? this.carrier.pivot : console.log('invalid setting') :
-
-            (type == 'cruiser') ? (setting == 'rotation') ? this.cruiser.rotation :
-            (setting == 'coords') ? this.cruiser.coords :
-            (setting == 'pivot') ? this.cruiser.pivot : console.log('invalid setting') :
-
-            (type == 'destroyer') ? (setting == 'rotation') ? this.destroyer.rotation :
-            (setting == 'coords') ? this.destroyer.coords :
-            (setting == 'pivot') ? this.destroyer.pivot : console.log('invalid setting') :
-
-            (type == 'submarine') ? (setting == 'rotation') ? this.submarine.rotation :
-            (setting == 'coords') ? this.submarine.coords :
-            (setting == 'pivot') ? this.submarine.pivot : console.log('invalid setting') :
-
-            console.log('No such piece exists');
+    des: (rot, coords, pivot) => {
+        return {
+            destroyer: {
+                size: 2,
+                rotation: !rot ? 'horizontal' : rot,
+                coords: !coords ? [] : coords,
+                pivot: !pivot ? null : pivot
+            }
+        }
     }
 }
 
@@ -83,6 +57,11 @@ const player = {
 }
 const computer = {
     "color": "red"
+}
+
+// Manipulate ship properties
+function changeProps(type, prop) {
+
 }
 
 // Create the pieces
@@ -168,3 +147,5 @@ function warning(title, msg) {
         $("#alertModal").modal();
     });
 }
+
+export { shipState }
