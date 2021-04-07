@@ -2,124 +2,31 @@
 const ships = {
     carrier: {
         size: 5,
-        rotation: "horizontal",
         coords: [],
-        pivot: null
+        rotated: false
     },
     battleship: {
         size: 4,
-        rotation: "horizontal",
         coords: [],
-        pivot: null
+        rotated: false
     },
     cruiser: {
         size: 3,
-        rotation: "horizontal",
         coords: [],
-        pivot: null
+        rotated: false
     },
     submarine: {
         size: 3,
-        rotation: "horizontal",
         coords: [],
-        pivot: null
+        rotated: false
     },
     destroyer: {
         size: 2,
-        rotation: "horizontal",
         coords: [],
-        pivot: null
+        rotated: false
     },
-    changeRotation: function (type, newRot) {
-        if (type === "carrier") {
-            this.carrier.rotation = newRot;
-        } else if (type === "battleship") {
-            this.battleship.rotation = newRot;
-        } else if (type === "cruiser") {
-            this.cruiser.rotation = newRot;
-        } else if (type === "submarine") {
-            this.submarine.rotation = newRot;
-        } else if (type === "destroyer") {
-            this.destroyer.rotation = newRot;
-        }
-    },
-    changeCoords: function (type, x, y) {
-        if (type === "carrier") {
-            this.carrier.coords.push(x, y);
-        } else if (type === "battleship") {
-            this.battleship.coords.push(x, y);
-        } else if (type === "cruiser") {
-            this.cruiser.coords.push(x, y);
-        } else if (type === "submarine") {
-            this.submarine.coords.push(x, y);
-        } else if (type === "destroyer") {
-            this.destroyer.coords.push(x, y);
-        }
-    },
-    setPivot: function (type, coords) {
-        if (type === "carrier") {
-            this.carrier.pivot = coords;
-        } else if (type === "battleship") {
-            this.battleship.pivot = coords;
-        } else if (type === "cruiser") {
-            this.cruiser.pivot = coords;
-        } else if (type === "submarine") {
-            this.submarine.pivot = coords;
-        } else if (type === "destroyer") {
-            this.destroyer.pivot = coords;
-        }
-    },
-    getRot: function (type) {
-        if (type === "carrier") {
-            return this.carrier.rotation;
-        } else if (type === "battleship") {
-            return this.battleship.rotation;
-        } else if (type === "cruiser") {
-            return this.cruiser.rotation;
-        } else if (type === "submarine") {
-            return this.submarine.rotation;
-        } else if (type === "destroyer") {
-            return this.destroyer.rotation
-        }
-    },
-    getSize: function (type) {
-        if (type === "carrier") {
-            return this.carrier.size;
-        } else if (type === "battleship") {
-            return this.battleship.size;
-        } else if (type === "cruiser") {
-            return this.cruiser.size;
-        } else if (type === "submarine") {
-            return this.submarine.size;
-        } else if (type === "destroyer") {
-            return this.destroyer.size;
-        }
-    },
-    getCoords: function (type) {
-        if (type === "carrier") {
-            return this.carrier.coords;
-        } else if (type === "battleship") {
-            return this.battleship.coords;
-        } else if (type === "cruiser") {
-            return this.cruiser.coords;
-        } else if (type === "submarine") {
-            return this.submarine.coords;
-        } else if (type === "destroyer") {
-            return this.destroyer.coords;
-        }
-    },
-    getPivot: function (type) {
-        if (type === "carrier") {
-            return this.carrier.pivot;
-        } else if (type === "battleship") {
-            return this.battleship.pivot;
-        } else if (type === "cruiser") {
-            return this.cruiser.pivot;
-        } else if (type === "submarine") {
-            return this.submarine.pivot;
-        } else if (type === "destroyer") {
-            return this.destroyer.pivot;
-        }
+    changeProperty: function (type, attr, val) {
+        this[type][attr] = val
     }
 }
 
