@@ -1,54 +1,32 @@
 // Makes the game pieces that will make up the board and assign them to the board
-const shipState = {
-    car: (rot, coords, pivot) => {
-        return {
-            carrier: {
-                size: 5,
-                rotation: !rot ? 'horizontal' : rot,
-                coords: !coords ? [] : coords,
-                pivot: !pivot ? null : pivot
-            }
-        }
+const ships = {
+    carrier: {
+        size: 5,
+        coords: [],
+        rotated: false
     },
-    bat: (rot, coords, pivot) => {
-        return {
-            battleship: {
-                size: 4,
-                rotation: !rot ? 'horizontal' : rot,
-                coords: !coords ? [] : coords,
-                pivot: !pivot ? null : pivot
-            }
-        }
+    battleship: {
+        size: 4,
+        coords: [],
+        rotated: false
     },
-    cru: (rot, coords, pivot) => {
-        return {
-            cruiser: {
-                size: 3,
-                rotation: !rot ? 'horizontal' : rot,
-                coords: !coords ? [] : coords,
-                pivot: !pivot ? null : pivot
-            }
-        }
+    cruiser: {
+        size: 3,
+        coords: [],
+        rotated: false
     },
-    sub: (rot, coords, pivot) => {
-        return {
-            submarine: {
-                size: 3,
-                rotation: !rot ? 'horizontal' : rot,
-                coords: !coords ? [] : coords,
-                pivot: !pivot ? null : pivot
-            }
-        }
+    submarine: {
+        size: 3,
+        coords: [],
+        rotated: false
     },
-    des: (rot, coords, pivot) => {
-        return {
-            destroyer: {
-                size: 2,
-                rotation: !rot ? 'horizontal' : rot,
-                coords: !coords ? [] : coords,
-                pivot: !pivot ? null : pivot
-            }
-        }
+    destroyer: {
+        size: 2,
+        coords: [],
+        rotated: false
+    },
+    changeProperty: function (type, attr, val) {
+        this[type][attr] = val
     }
 }
 
@@ -57,11 +35,6 @@ const player = {
 }
 const computer = {
     "color": "red"
-}
-
-// Manipulate ship properties
-function changeProps(type, prop) {
-
 }
 
 // Create the pieces
@@ -140,12 +113,10 @@ document.querySelector('.theButtonZone').appendChild(rotBtn);
 const notice = document.getElementById('content');
 const modTitle = document.getElementById('modalTitle');
 
-function warning(title, msg) {
+function warning (title, msg) {
     modTitle.innerText = title.toString();
     notice.innerHTML = msg.toString();
     $(document).ready(function () {
         $("#alertModal").modal();
     });
 }
-
-export { shipState }
