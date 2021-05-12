@@ -1,4 +1,4 @@
-import GamePiece from "./GamePiece.mjs";
+import {  GamePiece } from "../ts/GamePiece";
 import placeShip from "./placeShip.mjs";
 
 /* Piece sizes:
@@ -11,7 +11,7 @@ import placeShip from "./placeShip.mjs";
     *By default all game pieces will be set horizontally.
  */
 
-const gamePieces = [
+const gamePieces: GamePiece = [
     new GamePiece('Carrier', 5),
     new GamePiece('Battleship', 4),
     new GamePiece('Cruiser', 3),

@@ -1,4 +1,4 @@
-class GamePiece {
+class GamePiece{
   constructor(label, pSize, coords = [], rotated = false) {
     this.label = label;
     this.pSize = pSize;
