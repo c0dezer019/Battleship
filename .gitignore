@@ -1,3 +1,4 @@
 js/prototyping.js
 .idea
 .vscode
+.node_modules
