@@ -6,18 +6,14 @@
     <title>Battleship</title>
     <meta name="description" content="A classic game of Battleship.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
+    <!-- CSS only -->
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -25,35 +21,32 @@
         <img src="images/pngkey.com-battleship-png-2420677.png" alt="logo">
     </header>
     <main>
-        <section class="game_board">
-            <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="yodalForVictory"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalTitle"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body" id="content">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        </div>
+        <section id="gameboard">
+            <div class="modal" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true"
+                 aria-labelledby="gameboard" data-action="show">
+                <div class="modalContent">
+                    <a class="close" href="#" role="button">&times;</a>
+                    <div class="modalHeader">
+                        <h2 class="modalTitle">Alert!</h2>
+                    </div>
+                    <div class="modalBody">
+                        <p class="modalMsg">You can't do that!</p>
+                    </div>
+                    <div class="modalFooter">
+                        <button class="closeButton" data-dismiss="hide()" type="button">Got it</button>
                     </div>
                 </div>
             </div>
             <div id="container">
-                <div class="statusBoard" id="playerBoard">
-                    <div class="gamePieces" id="playerPieces"></div>
+                <div class="statusBoard" id="playerOneBoard">
+                    <div class="gamePieces" id="playerOnePieces"></div>
                 </div>
                 <div id="gridContainer">
-                    <div id="playerGridContainer"></div>
-                    <div id="computerGridContainer"></div>
+                    <div id="playerOneGridContainer"></div>
+                    <div id="PlayerTwoGridContainer"></div>
                 </div>
-                <div class="statusBoard" id="computerBoard">
-                    <div class="gamePieces" id="computerPieces"></div>
+                <div class="statusBoard" id="PlayerTwoBoard">
+                    <div class="gamePieces" id="playerTwoPieces"></div>
                 </div>
             </div>
         </section>
