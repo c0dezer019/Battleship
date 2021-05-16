@@ -1,5 +1,5 @@
 import {  GamePiece } from "../ts/GamePiece";
-import placeShip from "./placeShip.mjs";
+import staging from "./staging.mjs";
 
 /* Piece sizes:
     carrier: 5
