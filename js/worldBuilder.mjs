@@ -1,5 +1,4 @@
 
-import staging from "./staging.mjs";
 
 // j represents column, i represents row
 const maxLength = []  // x and y maximums
