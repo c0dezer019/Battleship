@@ -9,13 +9,26 @@ const occupiedCCoords = [];
 const playerPlacedShips = [];
 const computerPlacedShips = [];
 
-const carrier = new GamePiece('Carrier', 5);
-const battleship = new GamePiece('Battleship', 4);
-const cruiser = new GamePiece('Cruiser', 3);
-const submarine = new GamePiece('Submarine', 3);
-const destroyer = new GamePiece('Destroyer', 3);
+const pieces = [
+	new GamePiece('Carrier', 5),
+	new GamePiece('Battleship', 4),
+	new GamePiece('Cruiser', 3),
+	new GamePiece('Submarine', 3),
+	new GamePiece('Destroyer', 3)
+];
+
+// We want to setup a function that procedurally generates the game pieces on each side of the
+// board.
+const setupStagingArea = (items) => {
+	const stagingArea = document.getElementsByClassName('stagingArea');
+
+	stagingArea.forEach(el => {
+
+	})
+}
 
 const stage = (piece, x, y) => {
 	const coords = `${x}-${y}`
 
 };
+sdfasdfasdfasdfasdf
