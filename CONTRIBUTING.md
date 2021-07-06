@@ -82,4 +82,4 @@ Collaborator responsibilities:
 
 ### **First-timers**
 
-If you are new to collaboration, try collaborating first before asking to be a maintainer so you understand how it all works. Look for 
+If you are new to collaboration, try collaborating first before asking to be a maintainer so you understand how it all works.
