@@ -1,4 +1,4 @@
-import {  GamePiece } from "../ts/GamePiece";
+import GamePiece from "../js/GamePiece";
 import staging from "./staging.mjs";
 
 /* Piece sizes:
@@ -11,7 +11,7 @@ import staging from "./staging.mjs";
     *By default all game pieces will be set horizontally.
  */
 
-const gamePieces: GamePiece = [
+const gamePieces = [
     new GamePiece('Carrier', 5),
     new GamePiece('Battleship', 4),
     new GamePiece('Cruiser', 3),

@@ -97,9 +97,9 @@ section {
 }
 
 .modal {
-    background-color: rgba(24, 26, 28, 25%);
+    background-color: rgba(24, 26, 28, 0.25);
     display: none;
-    flex-direction: vertical;
+    flex-direction: column;
     position: fixed;
     z-index: 1;
     left: 0;

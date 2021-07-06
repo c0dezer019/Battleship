@@ -1,48 +1,36 @@
-
-import staging from "./staging.mjs";
-
 // j represents column, i represents row
 const maxLength = []  // x and y maximums
 let mode = 'staging';
 
-function generateGrid(row, col) {
-  maxLength.push(row, col)
+function generateGrid(row, col, numberOfPlayers) {
+	maxLength.push(row, col)
 
-  // Create a dynamic grid. This is what the player sees.
-  const pGridContainer = document.getElementById('playerGridContainer');
-  pGridContainer.style.setProperty('--grid-rows', row);
-  pGridContainer.style.setProperty('--grid-cols', col);
+	for (let i = 1; i <= numberOfPlayers; i++) {
+		// Create a dynamic grid. This is what the player sees.
+		const playerGrid = document.createElement('div');
+		const gridId = `player${i}Container`;
+		playerGrid.setAttribute('id', gridId);
+		playerGrid.style.setProperty('--grid-rows', row);
+		playerGrid.style.setProperty('--grid-cols', col);
+		// Append container to parent container.
+		const container = document.querySelector('#playerOneGridContainer');
+		container.appendChild(playerGrid);
 
-  for (let i = 0; i < row; i++) {
-	for (let j = 0; j < col; j++) {
-	  const cell = document.createElement('div');
-	  pGridContainer.appendChild(cell).className = "player-grid-item";
-	  const cellId = `${ j }-${ i }`;
-	  // Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on.
-	  cell.setAttribute('id', cellId);
-	  cell.dataset.column = `${j}`;
-	  cell.dataset.row = `${i}`;
+		for (let j = 0; j < row; j++) {
+			for (let k = 0; k < col; j++) {
+				const cell = document.createElement('div');
+				gridContainer.appendChild(cell).className = `player${i}GridItem`;
+				const cellId = `${k}-${j}`;
+				// Give each cell a unique ID corresponding to it's grid coordinates. E.X. Grid 1-1, 1-2, 2-1, and so on.
+				cell.setAttribute('id', cellId);
+				cell.dataset.column = `${k}`;
+				cell.dataset.row = `${j}`;
+			}
+		}
 	}
-  }
-
-  // Generate computer's side of the board.
-  const cGridContainer = document.getElementById('computerGridContainer');
-  cGridContainer.style.setProperty('--grid-rows', row);
-  cGridContainer.style.setProperty('--grid-cols', col);
-
-  for (let i = 0; i < row; i++) {
-	for (let j = 0; j < col; j++) {
-	  const cell = document.createElement('div');
-	  cGridContainer.appendChild(cell).className = "comp-grid-item";
-	  const cellId = `c${ j }-${ i }`;
-	  cell.setAttribute('id', cellId);
-	  cell.dataset.column = `${j}`;
-	  cell.dataset.row = `${i}`;
-	}
-  }
 }
 
-generateGrid(10, 10);
+window.addEventListener('DOMContentLoaded', () => generateGrid(10, 10, 2));
 
 const buttonZone = document.createElement('div');
 buttonZone.setAttribute('class', 'theButtonZone');
@@ -58,16 +46,19 @@ rotBtn.setAttribute('id', 'rotate');
 rotBtn.innerText = 'Rotate';
 document.querySelector('.theButtonZone').appendChild(rotBtn);
 
+const handleClick = () => {};
+
 const pGridCoords = document.getElementById('playerGridContainer');
 const cGridCoords = document.getElementById('computerGridContainer');
 const rotateBtn = document.getElementById('rotate');
 const shipSelect = document.getElementById('playerPieces');
 const startBtn = document.getElementById('start');
+
 pGridCoords.addEventListener('click', handleClick);
 cGridCoords.addEventListener('click', handleClick);
 rotateBtn.addEventListener('click', handleClick);
 shipSelect.addEventListener('click', handleClick);
-startBtn.addEventListener('click', handleClick );
+startBtn.addEventListener('click', handleClick);
 
 
 
