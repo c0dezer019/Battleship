@@ -8,7 +8,7 @@ Thank you for your contribution! If you'd like to help refine this project, then
 
 2. Self-assign an [issue](https://github.com/c0dezer019/Battleship/issues) you're interested in working on.
 
-3. Create a branch with the following format: `name_task`
+3. Create a branch from `submain` with the following format: `name_task`
 
     `git branch -b name_task`
 
