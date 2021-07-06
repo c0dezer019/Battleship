@@ -33,6 +33,7 @@ You can use Codestream to track project progress right from your IDE in a side p
 - See what is actively being worked on.
 - Track and create issues.
 - Create blame maps.
+- Create links to help others navigate to a particular line of code.
 
 ***
 
@@ -62,9 +63,23 @@ Collaborator responsibilities:
 
 ### **Collaborators**
 
-- Please do not start a new branch or feature without first creating a corresponding issue.
+- DO NOT PUSH IDE-SPECIFIC CONFIG OR WORKSPACE FOLDERS/FILES.
+  - Most IDE/Editors like VS Code or IntelliJ create folders for IDE/Editor configuration. Pushing these will cause conflicts on both GitHub and with the workflows of other contributors.
+  - If you'd like to share these files with someone, use some other method of file sharing.
+- Please do not start a new branch or feature without first creating or assigning a corresponding issue.
 - Do your best to maintain style. Code should be clean and readable.
 - I prefer to use the Airbnb style guide.
 - If you are unsure how to proceed, ask.
 - If you do not understand something, ask the codeowner.
-- Update the CODEOWNERS file.
+- Update the CODEOWNERS file if you want to actively help maintain it.
+  - If you don't know how CODEOWNERS file works, here's the [guide](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-code-owners).
+  - If you created the directory, you own it.
+  - If you created the file, you own it.
+  - If you create a file within a directory you don't own, you own the file but not the directory.
+  - If you contributed to an existing file, add your @ next to the existing user for an  existing file entry.
+    - If you notice someone forgot to include themselves in the CODEOWNER file, ask them if they want to be included.
+  - If you do not want to be a CODEOWNER, then please add the file/folder without your name and add a comment explaining as such.
+
+### **First-timers**
+
+If you are new to collaboration, try collaborating first before asking to be a maintainer so you understand how it all works. Look for 
